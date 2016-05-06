@@ -19,16 +19,17 @@ import java.util.logging.Logger;
  */
 public class test {
     public static void main (String[] args){
-        String dbURL = "jdbc:derby:C:\\Users\\The PinkyCandy\\Documents\\NetBeansProjects\\DDS_Videoclub\\DDS_Videoclub\\data\\dbvideoclub;create=true";
         try {
+            String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+            Class.forName(driver).newInstance();
+            String dbURL = "jdbc:derby:C:\\Users\\The PinkyCandy\\Documents\\NetBeansProjects\\DDS_Videoclub\\DDS_Videoclub\\data\\dbvideoclub;create=true";
             Connection conn = DriverManager.getConnection(dbURL);
             Statement stmt = conn.createStatement();
-            String query = "select * from peliculas;";
-            ResultSet rs = stmt.executeQuery(query);
+            ResultSet rs = stmt.executeQuery("select * from peliculas");
             while(rs.next()){
                 System.out.println(rs.getString("nombre"));
             }
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
             Logger.getLogger(test.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
