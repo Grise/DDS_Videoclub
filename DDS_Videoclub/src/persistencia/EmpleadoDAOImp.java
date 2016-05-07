@@ -40,7 +40,7 @@ public class EmpleadoDAOImp implements IEmpleadoDAO {
         try {
             connectionManager.connect();
             connectionManager
-                    .updateDB("insert into EMPLEADO (ID, NOMBRE) values('"
+                    .updateDB("insert into EMPLEADO (NOMBRE) values('"
                             + empleado.getNombre() + "')");
             connectionManager.close();
         } catch (Exception e) {
