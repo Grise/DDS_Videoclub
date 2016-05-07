@@ -1,21 +1,26 @@
 package principal;
 
+import persistencia.ConnectionManager;
+
 import java.sql.*;
 
 public class test {
 
     public static void main(String[] args) {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:hsqldb:file:data/bdvc", "sa", "sa");
-            Statement statement = connection.createStatement();
-            String sql = "SELECT * FROM pruebas";
-            ResultSet rs = statement.executeQuery(sql);
+            ConnectionManager connectionManager = new ConnectionManager("bdvc");
+            connectionManager.connect();
+            connectionManager.queryDB("create table pruebas(id bigint)");
+            connectionManager.queryDB("insert into pruebas values (1)");
+            connectionManager.queryDB("insert into pruebas values (2)");
+            connectionManager.queryDB("insert into pruebas values (3)");
+            ResultSet rs = connectionManager.queryDB("select * from pruebas");
             while (rs.next()) {
-                System.out.println(rs.getString("ID"));
+                System.out.println(rs.getInt("id"));
             }
-        } catch (SQLException e) {
+            connectionManager.close();
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
     }
 }
