@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2423649070">
+    <data-source source="LOCAL" name="HSQLDB (Local) - data" uuid="955304a7-ffb6-4cb4-8c2f-2933498936ca">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:file:$PROJECT_DIR$/DDS_Videoclub/data/bdvc</jdbc-url>
+    </data-source>
+  </component>
+</project>
