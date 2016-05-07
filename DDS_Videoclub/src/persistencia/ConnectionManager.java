@@ -23,7 +23,7 @@ public class ConnectionManager {
 		}
 	}
 
-	public void updateDB(String sql) throws SQLException {
+	void updateDB(String sql) throws SQLException {
 		if (dbcon != null) {
 				Statement sentencia = dbcon.createStatement();
 				sentencia.executeUpdate(sql);
