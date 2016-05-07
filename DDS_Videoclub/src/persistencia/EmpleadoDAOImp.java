@@ -4,13 +4,11 @@ package persistencia;
 import excepciones.DAOExcepcion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import persistencia.dto.EmpleadoDTO;
 
 public class EmpleadoDAOImp implements IEmpleadoDAO {
 	
 	protected ConnectionManager connectionManager;
-	protected LocalDateTime dateTime;
 
 	public EmpleadoDAOImp() throws DAOExcepcion {
 		super();
@@ -43,8 +41,6 @@ public class EmpleadoDAOImp implements IEmpleadoDAO {
 			connectionManager.connect();
 			connectionManager
 					.updateDB("insert into EMPLEADO (ID, NOMBRE) values('"
-							+ empleado.getId()
-							+ "','"
 							+ empleado.getNombre() + "')");
 			connectionManager.close();
 		} catch (Exception e) {
