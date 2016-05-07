@@ -1,11 +1,10 @@
 package persistencia;
 
 import excepciones.DAOExcepcion;
+import persistencia.dto.GeneroDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import persistencia.dto.GeneroDTO;
 
 public class GeneroDAOImp implements IGeneroDAO {
 

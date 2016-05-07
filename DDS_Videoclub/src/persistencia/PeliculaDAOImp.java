@@ -1,11 +1,10 @@
 package persistencia;
 
 import excepciones.DAOExcepcion;
+import persistencia.dto.PeliculaDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import persistencia.dto.PeliculaDTO;
 
 public class PeliculaDAOImp implements IPeliculaDAO {
 

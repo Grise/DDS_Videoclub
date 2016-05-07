@@ -1,13 +1,13 @@
 package presentacion.controlador;
 
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainApp extends Application {
 
@@ -27,12 +27,12 @@ public class MainApp extends Application {
     /**
      * Initializes the root layout.
      */
-    public void initRootLayout() {
+    private void initRootLayout() {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("presentacion/vista/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
             
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -46,12 +46,12 @@ public class MainApp extends Application {
     /**
      * Shows the person overview inside the root layout.
      */
-    public void showPersonOverview() {
+    private void showPersonOverview() {
         try {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("presentacion/vista/PersonOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            AnchorPane personOverview = loader.load();
             
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
@@ -62,7 +62,7 @@ public class MainApp extends Application {
     
 	/**
 	 * Returns the main stage.
-	 * @return
+	 * @return null
 	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
