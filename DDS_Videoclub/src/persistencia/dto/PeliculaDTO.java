@@ -4,7 +4,7 @@ public class PeliculaDTO {
     private String nombre;
     private int id, director, genero, stock;
 
-    public PeliculaDTO(int id,String nombre, int director, int genero, int stock) {
+    public PeliculaDTO(int id, String nombre, int director, int genero, int stock) {
         this.id = id;
         this.nombre = nombre;
         this.director = director;
