@@ -1,7 +1,11 @@
 
 package persistencia;
 
+import excepciones.DAOExcepcion;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import persistencia.dto.EmpleadoDTO;
 
 public class EmpleadoDAOImp implements IEmpleadoDAO {
 	
@@ -39,7 +43,7 @@ public class EmpleadoDAOImp implements IEmpleadoDAO {
 			connectionManager.connect();
 			connectionManager
 					.updateDB("insert into EMPLEADO (ID, NOMBRE) values('"
-							+ empleado.getDni()
+							+ empleado.getId()
 							+ "','"
 							+ empleado.getNombre() + "')");
 			connectionManager.close();
