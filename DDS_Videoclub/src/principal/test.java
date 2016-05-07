@@ -10,9 +10,9 @@ public class test {
         try {
             ConnectionManager connectionManager = new ConnectionManager("dbvideoclub");
             connectionManager.connect();
-            ResultSet rs = connectionManager.queryDB("select * from pruebas");
+            ResultSet rs = connectionManager.queryDB("select * from director");
             while (rs.next()) {
-                System.out.println(rs.getInt("id"));
+                System.out.println(rs.getString("nombre"));
             }
             connectionManager.close();
             System.out.println("Desconectado de la base de datos.");
