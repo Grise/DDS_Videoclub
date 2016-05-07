@@ -8,7 +8,7 @@ public class ConnectionManager {
 
 	public ConnectionManager(String dbname) throws ClassNotFoundException {
 		Class.forName("org.hsqldb.jdbcDriver");
-		sourceURL = "jdbc:hsqldb:file:/DDS_Videoclub/data/" + dbname;
+		sourceURL = "jdbc:hsqldb:file:./DDS_Videoclub/data/" + dbname;
 	}
 
 	public void connect() throws SQLException {

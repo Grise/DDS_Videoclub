@@ -8,17 +8,14 @@ public class test {
 
     public static void main(String[] args) {
         try {
-            ConnectionManager connectionManager = new ConnectionManager("bdvc");
+            ConnectionManager connectionManager = new ConnectionManager("dbvideoclub");
             connectionManager.connect();
-            connectionManager.queryDB("create table pruebas(id bigint)");
-            connectionManager.queryDB("insert into pruebas values (1)");
-            connectionManager.queryDB("insert into pruebas values (2)");
-            connectionManager.queryDB("insert into pruebas values (3)");
             ResultSet rs = connectionManager.queryDB("select * from pruebas");
             while (rs.next()) {
                 System.out.println(rs.getInt("id"));
             }
             connectionManager.close();
+            System.out.println("Desconectado de la base de datos.");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
