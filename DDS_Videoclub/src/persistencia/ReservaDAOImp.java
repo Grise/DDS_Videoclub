@@ -1,16 +1,16 @@
-
 package persistencia;
 
 import excepciones.DAOExcepcion;
+import persistencia.dto.ReservaDTO;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import persistencia.dto.ReservaDTO;
 
 public class ReservaDAOImp implements IReservaDAO {
 
     private ConnectionManager connectionManager;
-    protected LocalDateTime dateTime;
+    private LocalDateTime dateTime;
 
     public ReservaDAOImp() throws DAOExcepcion {
         super();
@@ -30,9 +30,7 @@ public class ReservaDAOImp implements IReservaDAO {
             if (rs.next())
                 return new ReservaDTO(
                         rs.getInt("ID"),
-                        dateTime =
-			LocalDateTime.of(rs.getDate("FECHA").toLocalDate(),
-			rs.getTime("FECHA").toLocalTime()),
+                        dateTime = LocalDateTime.of(rs.getDate("FECHA").toLocalDate(), rs.getTime("FECHA").toLocalTime()),
                         rs.getInt("PELICULA"),
                         rs.getInt("CLIENTE"),
                         rs.getInt("EMPLEADO"));
@@ -44,20 +42,20 @@ public class ReservaDAOImp implements IReservaDAO {
     }
 
     public void crearReserva(ReservaDTO reserva) throws DAOExcepcion {
-		try {
-			connectionManager.connect();
-			connectionManager
-					.updateDB("insert into RESERVA (ID, FECHA, PELICULA, CLIENTE, EMPLEADO) values('"
-							+ reserva.getFecha()
-							+ "','"
-							+ reserva.getPelicula()
-							+ "','"
-							+ reserva.getCliente()
-							+ "', '"
-							+ reserva.getEmpleado() + "')");
-			connectionManager.close();
-		} catch (Exception e) {
-			throw new DAOExcepcion(e);
-		}
-	}
+        try {
+            connectionManager.connect();
+            connectionManager
+                    .updateDB("insert into RESERVA (ID, FECHA, PELICULA, CLIENTE, EMPLEADO) values('"
+                            + reserva.getFecha()
+                            + "','"
+                            + reserva.getPelicula()
+                            + "','"
+                            + reserva.getCliente()
+                            + "', '"
+                            + reserva.getEmpleado() + "')");
+            connectionManager.close();
+        } catch (Exception e) {
+            throw new DAOExcepcion(e);
+        }
+    }
 }

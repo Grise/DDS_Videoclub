@@ -6,7 +6,7 @@ public class ReservaDTO {
     private LocalDateTime fecha;
     private int id, pelicula, cliente, empleado;
 
-    public ReservaDTO(int id,LocalDateTime fecha, int pelicula, int cliente, int empleado) {
+    public ReservaDTO(int id, LocalDateTime fecha, int pelicula, int cliente, int empleado) {
         this.id = id;
         this.fecha = fecha;
         this.pelicula = pelicula;

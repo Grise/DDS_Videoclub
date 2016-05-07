@@ -1,4 +1,3 @@
-
 package persistencia;
 
 import excepciones.DAOExcepcion;
@@ -11,4 +10,3 @@ interface IReservaDAO {
     void crearReserva(ReservaDTO empleado) throws DAOExcepcion;
 
 }
-
