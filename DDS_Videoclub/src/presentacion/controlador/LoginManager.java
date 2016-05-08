@@ -47,7 +47,7 @@ public class LoginManager {
             Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    // TODO https://gist.github.com/jewelsea/4631319
     private void showMainView(String sessionID) {
         FrontController frontController = new FrontController(scene);
         //TODO Comprobar el tipo de cuenta para pasar la información en el dispatchRequest según toque
