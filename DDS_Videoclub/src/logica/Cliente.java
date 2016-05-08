@@ -1,10 +1,10 @@
 package logica;
 
-class Cliente {
+class Cliente implements Persona {
     private int id;
     private String nombre;
 
-    public Cliente(int id, String nombre) {
+    Cliente(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }

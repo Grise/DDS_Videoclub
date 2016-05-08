@@ -1,10 +1,10 @@
 package logica;
 
-class Director {
+class Director implements Persona {
     private int id;
     private String nombre;
 
-    public Director(int id, String nombre) {
+    Director(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }

@@ -1,10 +1,10 @@
 package logica;
 
-class Empleado {
+class Empleado implements Persona{
     private int id;
     private String nombre;
 
-    public Empleado(int id, String nombre) {
+    Empleado(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
