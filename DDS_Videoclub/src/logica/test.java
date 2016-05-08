@@ -1,14 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package logica;
 
-/**
- *
- * @author The PinkyCandy
- */
 public class test {
+
+    public static test testcreator(final int prueba, final int prueba2) {
+        return new test(prueba, prueba2);
+    }
+    public int prueba;
+    public int prueba2;
+
+    private test(final int prueba, final int prueba2) {
+        this.prueba = prueba;
+        this.prueba2 = prueba2;
+    }
+    
     
 }
