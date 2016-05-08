@@ -50,7 +50,7 @@ public class LoginManager {
     private void showMainView(String sessionID) {
         try {
             FrontController frontController = new FrontController();
-      frontController.dispatchRequest("EMPLEADO");
+            frontController.dispatchRequest("EMPLEADO");
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(enlace)
             );
