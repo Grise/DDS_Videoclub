@@ -12,7 +12,7 @@ public class PersonaFabrica {
         if (tipoPersona.equalsIgnoreCase("CLIENTE")) {
             Cliente cliente = (Cliente) personaMap.get(nombre);
             if (cliente == null) {
-                cliente = new Cliente(nombre);
+                cliente = new Cliente(id, nombre);
                 personaMap.put(nombre, cliente);
             }
             return cliente;
@@ -21,7 +21,7 @@ public class PersonaFabrica {
         if (tipoPersona.equalsIgnoreCase("EMPLEADO")) {
             Empleado empleado = (Empleado) personaMap.get(nombre);
             if (empleado == null){
-                empleado = new Empleado(nombre);
+                empleado = new Empleado(id, nombre);
                 personaMap.put(nombre, empleado);
             }
             return empleado;
@@ -30,7 +30,7 @@ public class PersonaFabrica {
         if (tipoPersona.equalsIgnoreCase("DIRECTOR")) {
             Director director = (Director) personaMap.get(nombre);
             if (director == null){
-                director = new Director(nombre);
+                director = new Director(id, nombre);
                 personaMap.put(nombre, director);
             }
             return director;
