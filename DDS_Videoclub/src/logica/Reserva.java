@@ -1,4 +1,3 @@
-
 package logica;
 
 import java.time.LocalDateTime;
@@ -57,5 +56,5 @@ public class Reserva {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
-    
+
 }

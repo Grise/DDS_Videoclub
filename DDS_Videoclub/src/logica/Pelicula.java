@@ -1,7 +1,6 @@
-
 package logica;
 
-public class Pelicula {
+class Pelicula {
     private int id;
     private String nombre;
     private Director director;
@@ -55,5 +54,5 @@ public class Pelicula {
     public void setStock(int stock) {
         this.stock = stock;
     }
-    
+
 }

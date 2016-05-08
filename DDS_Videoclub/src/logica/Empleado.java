@@ -1,7 +1,6 @@
-
 package logica;
 
-public class Empleado {
+class Empleado {
     private int id;
     private String nombre;
 
@@ -25,5 +24,5 @@ public class Empleado {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

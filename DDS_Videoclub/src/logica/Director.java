@@ -1,7 +1,6 @@
-
 package logica;
 
-public class Director {
+class Director {
     private int id;
     private String nombre;
 
