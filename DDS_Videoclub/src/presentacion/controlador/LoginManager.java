@@ -2,6 +2,7 @@ package presentacion.controlador;
 
 import java.io.IOException;
 import java.util.logging.*;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import presentacion.controlador.LoginController;
@@ -48,18 +49,9 @@ public class LoginManager {
     }
 
     private void showMainView(String sessionID) {
-        try {
-            FrontController frontController = new FrontController();
-            frontController.dispatchRequest("EMPLEADO");
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(enlace)
-            );
-            scene.setRoot((Parent) loader.load());
-            MainViewController controller
-                    = loader.<MainViewController>getController();
-            controller.initSessionID(this, sessionID);
-        } catch (IOException ex) {
-            Logger.getLogger(LoginManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        FrontController frontController = new FrontController(scene);
+        //TODO Comprobar el tipo de cuenta para pasar la información en el dispatchRequest según toque
+        frontController.dispatchRequest("EMPLEADO");
+
     }
 }
