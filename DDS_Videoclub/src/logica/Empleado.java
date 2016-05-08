@@ -4,11 +4,14 @@ class Empleado implements Persona{
     private int id;
     private String nombre;
 
-    Empleado(int id, String nombre) {
+    public Empleado(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
+    public Empleado(String empleado){
+        this.nombre=empleado;
+    }
     public int getId() {
         return id;
     }

@@ -4,8 +4,12 @@ class Director implements Persona {
     private int id;
     private String nombre;
 
-    Director(int id, String nombre) {
+    public Director(int id, String nombre) {
         this.id = id;
+        this.nombre = nombre;
+    }
+
+    public Director(String nombre) {
         this.nombre = nombre;
     }
 
@@ -24,5 +28,5 @@ class Director implements Persona {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

@@ -15,6 +15,12 @@ class Pelicula {
         this.stock = stock;
     }
 
+    public Pelicula(String nombre, Director director, Genero genero, int stock){
+        this.nombre = nombre;
+        this.director = director;
+        this.genero = genero;
+        this.stock = stock;
+    }
     public int getId() {
         return id;
     }

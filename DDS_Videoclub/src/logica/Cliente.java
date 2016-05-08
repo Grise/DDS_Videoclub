@@ -4,10 +4,15 @@ class Cliente implements Persona {
     private int id;
     private String nombre;
 
-    Cliente(int id, String nombre) {
+    public Cliente(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
+
+    public Cliente(String nombre) {
+        this.nombre = nombre;
+    }
+
 
     public int getId() {
         return id;
