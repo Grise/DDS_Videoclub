@@ -6,7 +6,7 @@ import persistencia.dto.ClienteDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-class ClienteDAOImp {
+public class ClienteDAOImp implements IClienteDAO{
     private ConnectionManager connectionManager;
 
     public ClienteDAOImp() throws DAOExcepcion {

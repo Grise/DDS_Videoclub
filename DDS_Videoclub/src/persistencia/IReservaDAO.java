@@ -3,7 +3,7 @@ package persistencia;
 import excepciones.DAOExcepcion;
 import persistencia.dto.ReservaDTO;
 
-interface IReservaDAO {
+public interface IReservaDAO {
 
     ReservaDTO buscarReserva(int id) throws DAOExcepcion;
 

@@ -3,7 +3,7 @@ package persistencia;
 import excepciones.DAOExcepcion;
 import persistencia.dto.ClienteDTO;
 
-interface IClienteDAO {
+public interface IClienteDAO {
 
     ClienteDTO buscarCliente(int id) throws DAOExcepcion;
 
