@@ -1,6 +1,7 @@
 package logica;
 
 interface Persona {
+    //TODO: Modificarlo a clase abstracta.
     int getId();
 
     String getNombre();
