@@ -1,6 +1,6 @@
 package logica;
 
-class Director implements Persona {
+class Director extends Persona {
     private int id;
     private String nombre;
 

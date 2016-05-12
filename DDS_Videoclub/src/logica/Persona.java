@@ -1,12 +1,11 @@
 package logica;
 
-interface Persona {
-    //TODO: Modificarlo a clase abstracta.
-    int getId();
+abstract class Persona {
+    abstract int getId();
 
-    String getNombre();
+    abstract String getNombre();
 
-    void setId(int id);
+    abstract void setId(int id);
 
-    void setNombre(String nombre);
+    abstract void setNombre(String nombre);
 }
