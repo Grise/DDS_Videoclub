@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class PersonaFabrica {
     private final HashMap<String, Persona> personaMap = new HashMap<>();
 
-    public Persona getPersona(String tipoPersona, int id, String nombre) {
+    public Persona crearPersona(String tipoPersona, int id, String nombre) {
         if (tipoPersona == null)
             return null;
 

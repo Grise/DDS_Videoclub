@@ -1,6 +1,6 @@
 package logica;
 
-class Empleado implements Persona{
+class Empleado extends Persona{
     private int id;
     private String nombre;
 

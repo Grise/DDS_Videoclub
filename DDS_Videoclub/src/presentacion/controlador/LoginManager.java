@@ -5,7 +5,6 @@ import java.util.logging.*;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import presentacion.controlador.LoginController;
 
 /**
  * Manages control flow for logins
