@@ -16,6 +16,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Videoclub");
 
@@ -31,7 +32,7 @@ public class MainApp extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("presentacion/vista/RootLayout.fxml"));
+            loader.setLocation(MainApp.class.getResource("vista/RootLayout.fxml"));
             rootLayout = loader.load();
             
             // Show the scene containing the root layout.
