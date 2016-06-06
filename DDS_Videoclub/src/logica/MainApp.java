@@ -34,7 +34,7 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("../presentacion/vista/RootLayout.fxml"));
             rootLayout = loader.load();
-            rootLayout.getStylesheets().add(getClass().getResource("/presentacion/vista/DarkTheme.css").toExternalForm());
+            rootLayout.getStylesheets().add(getClass().getResource("/presentacion/mierdecitaDeHector/vista/DarkTheme.css").toExternalForm());
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
