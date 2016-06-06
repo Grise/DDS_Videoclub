@@ -2,9 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="background"
-            stylesheets="@../../../../../DDS_Videoclub/DDS_Videoclub/src/presentacion/vista/DarkTheme.css"
+<AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="background" stylesheets="DarkTheme.css"
             xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <SplitPane dividerPositions="0.35618729096989965" focusTraversable="true" layoutX="183.0" layoutY="76.0"
@@ -27,7 +25,7 @@
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="393.0" styleClass="background"
-                            stylesheets="@../../../../../DDS_Videoclub/DDS_Videoclub/src/presentacion/vista/DarkTheme.css">
+                            stylesheets="DarkTheme.css">
                     <children>
                         <Label layoutX="7.0" layoutY="6.0" styleClass="label-header" text="Person Details:"
                                AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>

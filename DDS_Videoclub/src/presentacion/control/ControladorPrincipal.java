@@ -1,0 +1,30 @@
+package presentacion.control;
+
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.stage.Stage;
+
+public class ControladorPrincipal {
+    private static final String PERSON_OVERVIEW = "../vista/PersonOverview.fxml";
+
+    private Stage primaryStage;
+
+    @FXML
+    void setPersonOverview(ActionEvent event) {
+        initCasoDeUso(PERSON_OVERVIEW, ControladorPersonOverview.class).show();
+    }
+
+    @FXML
+    void salir(ActionEvent event) {
+        Platform.exit();
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
+        return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, ControladorPrincipal.this);
+    }
+}
