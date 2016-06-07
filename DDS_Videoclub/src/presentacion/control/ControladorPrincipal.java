@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 public class ControladorPrincipal {
-    private static final String PERSON_OVERVIEW = "../vista/PersonOverview.fxml";
+    private static final String PERSON_OVERVIEW = "../vista/MenuPrincipalEmpleado.fxml";
 
     private Stage primaryStage;
 

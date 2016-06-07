@@ -20,7 +20,7 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
-    
+
     @FXML
     private Button nuevoAlquiler;
 
@@ -42,7 +42,7 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-});
+        });
 //      cancelar.setOnAction(event -> stage.close());
 /*      aceptar.setOnAction(event -> {
             if (dni.getText() != null && alquilerVehiculo.buscarCliente(dni.getText()) != null) {
