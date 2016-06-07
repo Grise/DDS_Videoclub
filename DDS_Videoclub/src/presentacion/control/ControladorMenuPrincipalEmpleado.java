@@ -1,24 +1,17 @@
-package presentacion.vista;
+package presentacion.control;
 
-import java.io.IOException;
-import presentacion.control.*;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
-import logica.MainApp;
-import presentacion.control.ControladorCasoDeUso;
-import presentacion.control.ControladorCasoDeUso;
-import presentacion.control.ControladorCasoDeUso;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
 
@@ -30,33 +23,25 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
     
     @FXML
     private Button nuevoAlquiler;
-    
-    
-        
-    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("MIERDA SECA");
-       nuevoAlquiler.setOnAction((event) -> {
-           System.out.println("eee");
-           
-    try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../presentacion/vista/AlquilerPelicula.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setOpacity(1);
-        stage.setTitle("Alquiler");
-        stage.setScene(new Scene(root, 450, 450));
-        stage.showAndWait();
-        
-    }catch (IOException e) {
-        e.printStackTrace();
-        
-    }
-    
+        nuevoAlquiler.setOnAction((event) -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../vista/AlquilerPelicula.fxml"));
+                Parent root = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setOpacity(1);
+                stage.setTitle("Alquiler");
+                stage.setScene(new Scene(root, 450, 450));
+                stage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 });
 //      cancelar.setOnAction(event -> stage.close());
 /*      aceptar.setOnAction(event -> {

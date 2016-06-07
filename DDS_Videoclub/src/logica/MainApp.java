@@ -24,7 +24,7 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showOverview("../presentacion/vista/PersonOverview.fxml");
+        showOverview("../presentacion/vista/MenuPrincipalEmpleado.fxml");
     }
 
     /**
