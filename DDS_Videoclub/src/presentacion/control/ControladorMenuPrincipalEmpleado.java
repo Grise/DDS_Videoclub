@@ -1,5 +1,6 @@
-package presentacion.vista;
+package presentacion.control;
 
+import java.io.IOException;
 import presentacion.control.*;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
@@ -7,8 +8,13 @@ import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+import logica.MainApp;
+import presentacion.control.ControladorCasoDeUso;
+import presentacion.control.ControladorCasoDeUso;
 
-public class ControladorPersonOverview extends ControladorCasoDeUso {
+public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -17,9 +23,16 @@ public class ControladorPersonOverview extends ControladorCasoDeUso {
     private URL location;
     
     @FXML
-    private void AlquilarPelicula() {
-    
-   
+    private void nuevoAlquiler() {
+     try {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(MainApp.class.getResource("../presentacion/vista/AlquilerPelicula.fxml"));
+     AnchorPane page = (AnchorPane) loader.load();
+     } catch (IOException e) {
+        e.printStackTrace();
+        
+    }
+
     
 }
 

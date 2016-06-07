@@ -1,4 +1,4 @@
-package presentacion.vista;
+package presentacion.control;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ public class ControladorPrincipal {
 
     @FXML
     void setPersonOverview(ActionEvent event) {
-        initCasoDeUso(PERSON_OVERVIEW, ControladorPersonOverview.class).show();
+        initCasoDeUso(PERSON_OVERVIEW, ControladorMenuPrincipalEmpleado.class).show();
     }
 
     @FXML
