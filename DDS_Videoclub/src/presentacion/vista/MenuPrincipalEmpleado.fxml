@@ -15,6 +15,7 @@
       <Button layoutX="14.0" layoutY="54.0" mnemonicParsing="false" text="Gestión de trabajadores " />
       <Button fx:id="nuevoAlquiler" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" text="Nuevo alquiler" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
@@ -101,6 +102,8 @@
             </Label>
          </children>
       </GridPane>
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
    </children>

@@ -65,6 +65,11 @@ public class MainApp extends Application {
 
 
     
+<<<<<<< HEAD
+=======
+    
+   
+>>>>>>> origin/master
     /**
      * Returns the main stage.
      *
