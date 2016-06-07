@@ -8,8 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import javafx.stage.Modality;
-import presentacion.control.ControladorAlquilerPelicula;
 
 public class MainApp extends Application {
 
@@ -63,13 +61,6 @@ public class MainApp extends Application {
         }
     }
 
-
-    
-<<<<<<< HEAD
-=======
-    
-   
->>>>>>> origin/master
     /**
      * Returns the main stage.
      *
