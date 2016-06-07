@@ -1,5 +1,6 @@
-package presentacion.control;
+package presentacion.vista;
 
+import presentacion.control.*;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -14,6 +15,13 @@ public class ControladorPersonOverview extends ControladorCasoDeUso {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    
+    @FXML
+    private void AlquilarPelicula() {
+    
+   
+    
+}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

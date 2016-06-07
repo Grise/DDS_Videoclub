@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="600.0" styleClass="background" stylesheets="@/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Button layoutX="40.0" layoutY="58.0" mnemonicParsing="false" text="Nueva reserva" />
+        <Button layoutX="187.0" layoutY="58.0" mnemonicParsing="false" text="Gestión de trabajadores " />
+        <TableView layoutX="27.0" layoutY="119.0" prefHeight="263.0" prefWidth="550.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="119.0">
+            <columns>
+                <TableColumn prefWidth="144.0" text="Socio" />
+                <TableColumn minWidth="6.0" prefWidth="435.0" text="Título" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
