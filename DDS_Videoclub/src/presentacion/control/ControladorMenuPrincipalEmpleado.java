@@ -30,7 +30,7 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
         stage.setTitle("MIERDA SECA");
         nuevoAlquiler.setOnAction((event) -> {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../vista/AlquilerPelicula.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(""));
                 Parent root = fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);

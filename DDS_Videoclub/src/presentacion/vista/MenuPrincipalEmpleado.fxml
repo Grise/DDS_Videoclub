@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorMenuPrincipalEmpleado">
-   <children>
-      <TableView layoutX="37.0" layoutY="129.0" prefHeight="245.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <columns>
-            <TableColumn prefWidth="144.0" text="Socio" />
-            <TableColumn minWidth="6.0" prefWidth="435.0" text="Título en alquiler" />
-         </columns>
-      </TableView>
-      <Button layoutX="14.0" layoutY="54.0" mnemonicParsing="false" text="Gestión de trabajadores " />
-      <Button fx:id="nuevoAlquiler" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" text="Nuevo alquiler" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.canvas.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.vista.ControladorPersonOverview">
    <children>
       <GridPane layoutX="32.0" layoutY="36.0" prefHeight="172.0" prefWidth="414.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -102,9 +83,5 @@
             </Label>
          </children>
       </GridPane>
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
    </children>
 </AnchorPane>
