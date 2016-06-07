@@ -28,7 +28,7 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
     public void initialize(URL location, ResourceBundle resources) {
         stage = new Stage(StageStyle.DECORATED);
         stage.setTitle("MIERDA SECA");
-        nuevoAlquiler.setOnAction((event) -> {
+        /*nuevoAlquiler.setOnAction((event) -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(""));
                 Parent root = fxmlLoader.load();
@@ -42,7 +42,7 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
+        });*/
 //      cancelar.setOnAction(event -> stage.close());
 /*      aceptar.setOnAction(event -> {
             if (dni.getText() != null && alquilerVehiculo.buscarCliente(dni.getText()) != null) {

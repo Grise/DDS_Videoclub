@@ -51,10 +51,10 @@ public class MainApp extends Application {
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource(rutaVista));
-            AnchorPane personOverview = loader.load();
+            AnchorPane overview = loader.load();
 
             // Set person overview into the center of root layout.
-            rootLayout.setCenter(personOverview);
+            rootLayout.setCenter(overview);
         } catch (IOException e) {
             e.printStackTrace();
         }
