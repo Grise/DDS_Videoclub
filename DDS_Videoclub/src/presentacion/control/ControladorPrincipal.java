@@ -1,5 +1,6 @@
 package presentacion.control;
 
+import presentacion.vista.ControladorMenuPrincipalEmpleado;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
