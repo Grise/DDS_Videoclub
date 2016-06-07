@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="220.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="presentacion.vista.CrearReservaController">
+   <children>
+      <DatePicker layoutX="11.0" layoutY="134.0" />
+      <DatePicker layoutX="200.0" layoutY="134.0" />
+      <Text layoutX="11.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desde:" />
+      <Text layoutX="200.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hasta:" />
+      <Button layoutX="11.0" layoutY="26.0" mnemonicParsing="false" text="Escoger Película" />
+      <Button layoutX="324.0" layoutY="181.0" mnemonicParsing="false" text="Cancelar" />
+      <Button layoutX="251.0" layoutY="181.0" mnemonicParsing="false" text="Aceptar" />
+      <Text layoutX="123.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="11.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI usuario:" />
+      <TextField layoutX="86.0" layoutY="72.0" prefHeight="25.0" prefWidth="138.0" />
+   </children>
+</AnchorPane>

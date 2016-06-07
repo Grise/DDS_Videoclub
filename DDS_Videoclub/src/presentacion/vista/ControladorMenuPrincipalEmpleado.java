@@ -8,7 +8,7 @@ import javafx.stage.StageStyle;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControladorPersonOverview extends ControladorCasoDeUso {
+public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;

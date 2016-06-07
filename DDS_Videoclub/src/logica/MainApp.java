@@ -24,7 +24,7 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showOverview("../presentacion/vista/PersonOverview.fxml");
+        showOverview("../presentacion/vista/MenuPrincipalEmpleado.fxml");
     }
 
     /**
@@ -63,7 +63,7 @@ public class MainApp extends Application {
         }
     }
 
-    
+
     
     public void alquilarPelicula() {
 		try {

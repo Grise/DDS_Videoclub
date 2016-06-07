@@ -7,13 +7,13 @@ import javafx.stage.Stage;
 import presentacion.control.ControladorCasoDeUso;
 
 public class ControladorPrincipal {
-    private static final String PERSON_OVERVIEW = "../vista/PersonOverview.fxml";
+    private static final String PERSON_OVERVIEW = "../vista/MenuPrincipalEmpleado.fxml";
 
     private Stage primaryStage;
 
     @FXML
     void setPersonOverview(ActionEvent event) {
-        initCasoDeUso(PERSON_OVERVIEW, ControladorPersonOverview.class).show();
+        initCasoDeUso(PERSON_OVERVIEW, ControladorMenuPrincipalEmpleado.class).show();
     }
 
     @FXML
