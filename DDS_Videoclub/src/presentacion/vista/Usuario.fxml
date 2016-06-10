@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="179.0" prefWidth="351.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Text layoutX="42.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre: " />
+      <Text layoutX="42.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI:" />
+      <Text layoutX="42.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id:" />
+      <TextField layoutX="129.0" layoutY="37.0" />
+      <TextField layoutX="129.0" layoutY="65.0" />
+      <TextField layoutX="129.0" layoutY="93.0" />
+      <Button layoutX="256.0" layoutY="140.0" mnemonicParsing="false" text="Guardar" />
+   </children>
+</AnchorPane>
