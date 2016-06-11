@@ -1,7 +1,6 @@
 package presentacion.control;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.adapter.ReadOnlyJavaBeanObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -10,14 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import logica.AlquilerPeliculas;
+import logica.Pelicula;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import logica.AlquilerPeliculas;
-import logica.Pelicula;
-import logica.Reserva;
 
 
 public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
@@ -62,6 +59,12 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
         botonCancelar.setOnAction(event -> stage.close());
 
         rellenarTableView();
+
+        botonAceptar.setOnAction(event -> {
+            Pelicula pelicula = tableViewPeliculas.getSelectionModel().getSelectedItem();
+            ControladorCrearReserva.setPelicula(pelicula);
+            stage.close();
+        });
     }
 
     private void rellenarTableView(){
@@ -71,7 +74,7 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
         tableColumnDirector.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getDirector().getNombre()));
         tableColumnDisponible.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getStockBooleano()));
 
-        List<Pelicula> listaPeliculas = AlquilerPeliculas.dameAlquilerPeliculasLogica().listarPeliculas();
+        List<Pelicula> listaPeliculas = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaPeliculas();
         this.tableViewPeliculas.getItems().addAll(listaPeliculas);
     }
 }
