@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -40,6 +41,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stage = new Stage(StageStyle.DECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Crear reserva");
 
         /**********************************************
