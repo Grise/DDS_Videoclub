@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainApp extends Application {
+public class AlquilerPeliculasApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
@@ -30,7 +30,7 @@ public class MainApp extends Application {
         try {
             // Cargamos el layout
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("../presentacion/vista/RootLayout.fxml"));
+            loader.setLocation(AlquilerPeliculasApp.class.getResource("../presentacion/vista/RootLayout.fxml"));
             rootLayout = loader.load();
 
             // Cargamos el contenido
@@ -45,7 +45,7 @@ public class MainApp extends Application {
     private void showOverview(String rutaVista) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource(rutaVista));
+            loader.setLocation(AlquilerPeliculasApp.class.getResource(rutaVista));
             AnchorPane overview = loader.load();
 
             // Set person overview into the center of root layout.

@@ -2,7 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 
-class Pelicula implements Subject {
+public class Pelicula implements Subject {
     private int id;
     private String nombre;
     private int anno;
@@ -78,6 +78,13 @@ class Pelicula implements Subject {
 
     public int getStock() {
         return stock;
+    }
+
+    public String getStockBooleano(){
+        if(stock>0)
+            return "Disponible";
+        else
+            return "No disponible";
     }
     
     public String getEstado() {

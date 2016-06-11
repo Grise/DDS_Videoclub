@@ -2,7 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 
-class Genero {
+public class Genero {
     private int id;
     private String nombre;
     private ArrayList<Pelicula> pelicula;

@@ -2,7 +2,7 @@ package logica;
 
 import java.util.ArrayList;
 
-class Director extends Persona {
+public class Director extends Persona {
     private int id;
     private String nombre;
     private ArrayList<Pelicula> pelicula;

@@ -18,11 +18,11 @@
       <Text layoutX="344.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Película" />
       <TableView fx:id="tableViewPeliculas" layoutX="15.0" layoutY="78.0" prefHeight="311.0" prefWidth="574.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="78.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Título" />
-            <TableColumn prefWidth="75.0" text="Año" />
-          <TableColumn prefWidth="75.0" text="Género" />
-            <TableColumn prefWidth="75.0" text="Director" />
-            <TableColumn prefWidth="75.0" text="Disponible" />
+          <TableColumn fx:id="tableColumnTitulo" prefWidth="75.0" text="Título" />
+            <TableColumn fx:id="tableColumnAnno" prefWidth="75.0" text="Año" />
+          <TableColumn fx:id="tableColumnGenero" prefWidth="75.0" text="Género" />
+            <TableColumn fx:id="tableColumnDirector" prefWidth="75.0" text="Director" />
+            <TableColumn fx:id="tableColumnDisponible" prefWidth="75.0" text="Disponible" />
         </columns>
          <opaqueInsets>
             <Insets />
