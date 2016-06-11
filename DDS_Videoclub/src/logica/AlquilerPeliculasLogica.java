@@ -78,7 +78,7 @@ public final class AlquilerPeliculasLogica {
     
     // DIRECTOR
     
-    public Director buscarSucursal(Integer id) {
+    public Director buscarDirector(Integer id) {
         return listaDirectores.get(id);
 
     }
