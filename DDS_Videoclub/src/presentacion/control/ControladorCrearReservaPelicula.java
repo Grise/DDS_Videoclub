@@ -2,16 +2,19 @@ package presentacion.control;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logica.AlquilerPeliculas;
 import logica.Pelicula;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -61,9 +64,17 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
         rellenarTableView();
 
         botonAceptar.setOnAction(event -> {
-            Pelicula pelicula = tableViewPeliculas.getSelectionModel().getSelectedItem();
-            ControladorCrearReserva.setPelicula(pelicula);
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("../vista/CrearReserva.fxml"));
+                AnchorPane frame = fxmlLoader.load();
+                ControladorCrearReserva c = fxmlLoader.getController();
+                c.pelicula = tableViewPeliculas.getSelectionModel().getSelectedItem();
+                c.textoEscogerPelicula.setText(c.pelicula.getNombre());
             stage.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 
