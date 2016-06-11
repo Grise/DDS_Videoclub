@@ -15,6 +15,7 @@ public final class AlquilerPeliculasLogica {
     private AlquilerPeliculasLogica Alquiler;
     private static AlquilerPeliculasLogica INSTANCIA = new AlquilerPeliculasLogica();
     private DAL dal;
+    private List<Empleado> listaEmpleados = new ArrayList<Empleado>();
     private List<Cliente> listaClientes = new ArrayList<Cliente>();
     private List<Reserva> listaReservas = new ArrayList<Reserva>();
     private List<Pelicula> listaPeliculas = new ArrayList<Pelicula>();
@@ -67,14 +68,47 @@ public final class AlquilerPeliculasLogica {
     
     // PRECARGA EN MEMORIA
     
-    /*private void cargaSucursales() {
-        List<SucursalDTO> listasucDTO = dal.obtenerSucursales();
-        for (SucursalDTO sucDTO : listasucDTO) {
-            añadirSucursal(new Sucursal(sucDTO.getId(),
-                    sucDTO.getDirección()));
+    private void cargaGeneros() {
+        List<GeneroDTO> listaGenerosDTO = dal.obtenerGeneros();
+        for (GeneroDTO generoDTO : listaGenerosDTO) {
+            añadirGenero(new Genero(generoDTO.getId(),
+                    generoDTO.getNombre()));
         }
 
-    }*/
+    }
+    
+    private void cargaDirectores() {
+        List<DirectorDTO> listaDirectoresDTO = dal.obtenerDirectores();
+        for (DirectorDTO directorDTO : listaDirectoresDTO) {
+            añadirDirector(new Director(directorDTO.getId(),
+                    directorDTO.getNombre()));
+        }
+
+    }
+    
+    private void cargaPeliculas() {
+        List<PeliculaDTO> listaPeliculasDTO = dal.obtenerPeliculas();
+        for (PeliculaDTO peliculaDTO : listaPeliculasDTO) {
+            añadirPelicula(new Pelicula(peliculaDTO.getId(),
+                    peliculaDTO.getNombre(),
+                    buscarDirector(peliculaDTO.getDirector()),
+                    buscarGenero(peliculaDTO.getGenero()),
+                    peliculaDTO.getStock()));
+        }
+
+    }
+    
+    private void cargaReservas() {
+        List<ReservaDTO> listaReservasDTO = dal.obtenerReservas();
+        for (ReservaDTO reservaDTO : listaReservasDTO) {
+            añadirReserva(new Reserva(reservaDTO.getId(),
+                    reservaDTO.getFecha(),
+            buscarPelicula(reservaDTO.getPelicula()),
+            buscarCliente(reservaDTO.getCliente()),
+            buscarEmpleado(reservaDTO.getEmpleado())));
+        }
+
+    }
     
     // DIRECTOR
     
@@ -195,5 +229,26 @@ public final class AlquilerPeliculasLogica {
     
     public List<Cliente> listarClientes() {
         return listaClientes;
+    }
+    
+    // EMPLEADO
+    
+    public Empleado buscarEmpleado(Integer id) {
+        return listaEmpleados.get(id);
+
+    }
+
+    public void añadirEmpleado(Empleado empleado) {
+        listaEmpleados.add(empleado);
+
+    }
+
+    public void eliminarEmpleado(Empleado empleado) {
+        listaEmpleados.remove(empleado);
+
+    }
+    
+    public List<Empleado> listarEmpleados() {
+        return listaEmpleados;
     }
 }
