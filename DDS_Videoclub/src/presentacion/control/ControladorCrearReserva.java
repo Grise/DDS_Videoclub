@@ -3,8 +3,8 @@ package presentacion.control;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -33,7 +33,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
     private Button botonAceptar;
 
     @FXML
-    private Text textoEscogerPelicula;
+    private Label textoEscogerPelicula;
 
     @FXML
     private TextField inputDNI;
@@ -54,9 +54,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
             Stage stageActual = (Stage) botonCancelar.getScene().getWindow();
             stageActual.close();
         });
-        botonEscogerPelicula.setOnMouseClicked(event -> {
-            initCasoDeUso(MENU_RESERVA_PELICULA, ControladorCrearReservaPelicula.class).show();
-        });
+        botonEscogerPelicula.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA_PELICULA, ControladorCrearReservaPelicula.class).show());
     }
 
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
