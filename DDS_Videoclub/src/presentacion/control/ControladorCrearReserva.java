@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class ControladorCrearReserva extends ControladorCasoDeUso {
     private static final String MENU_RESERVA_PELICULA = "../vista/CrearReservaPelicula.fxml";
 
-    private static Pelicula pelicula;
+    public Pelicula pelicula;
 
     @FXML
     private Stage primaryStage;
@@ -36,7 +36,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
     private Button botonAceptar;
 
     @FXML
-    private static Label textoEscogerPelicula;
+    public Label textoEscogerPelicula;
 
     @FXML
     private TextField inputDNI;
@@ -57,13 +57,10 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
             Stage stageActual = (Stage) botonCancelar.getScene().getWindow();
             stageActual.close();
         });
+
         botonEscogerPelicula.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA_PELICULA, ControladorCrearReservaPelicula.class).show());
     }
 
-    public static void setPelicula(Pelicula peliculaNueva){
-        pelicula=peliculaNueva;
-        textoEscogerPelicula.setText(pelicula.getNombre());
-    }
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
         return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, ControladorCrearReserva.this);
     }

@@ -2,16 +2,19 @@ package presentacion.control;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logica.AlquilerPeliculas;
 import logica.Pelicula;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -60,11 +63,7 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
 
         rellenarTableView();
 
-        botonAceptar.setOnAction(event -> {
-            Pelicula pelicula = tableViewPeliculas.getSelectionModel().getSelectedItem();
-            ControladorCrearReserva.setPelicula(pelicula);
-            stage.close();
-        });
+        botonAceptar.setOnAction(event -> {});
     }
 
     private void rellenarTableView(){
