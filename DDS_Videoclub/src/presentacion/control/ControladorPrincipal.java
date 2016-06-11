@@ -6,13 +6,14 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 public class ControladorPrincipal {
-    private static final String PERSON_OVERVIEW = "../vista/MenuPrincipalEmpleado.fxml";
-
+    private static final String MENU_EMPLEADO = "../vista/MenuPrincipalEmpleado.fxml";
+    private static final String MENU_RESERVA = "../vista/CrearReserva.fxml";
+    private static final String MENU_RESERVA_PELICULA = "../vista/CrearReservaPelicula.fxml";
     private Stage primaryStage;
 
     @FXML
     void setPersonOverview(ActionEvent event) {
-        initCasoDeUso(PERSON_OVERVIEW, ControladorMenuPrincipalEmpleado.class).show();
+        initCasoDeUso(MENU_EMPLEADO, ControladorMenuPrincipalEmpleado.class).show();
     }
 
     @FXML
