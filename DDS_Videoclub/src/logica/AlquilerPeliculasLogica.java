@@ -8,6 +8,7 @@ import java.util.List;
 import persistencia.dto.DirectorDTO;
 import persistencia.dto.GeneroDTO;
 import persistencia.dto.PeliculaDTO;
+import persistencia.dto.ReservaDTO;
 
 public final class AlquilerPeliculasLogica {
     
@@ -150,5 +151,49 @@ public final class AlquilerPeliculasLogica {
         return listaPeliculas;
     }
     
-    // TODO: Metodos de Cliente y Reserva
+    // RESERVA
+    
+    public Reserva buscarReserva(Integer id) {
+        return listaReservas.get(id);
+
+    }
+
+    public void añadirReserva(Reserva reserva) {
+        listaReservas.add(reserva);
+
+    }
+
+    public void eliminarReserva(Reserva reserva) {
+        listaReservas.remove(reserva);
+
+    }
+    
+    private void obtenerReservas() {
+        List<ReservaDTO> reservaDTO = dal.obtenerReservas();
+    }
+    
+    public List<Reserva> listarReservas() {
+        return listaReservas;
+    }
+    
+    // CLIENTE
+    
+    public Cliente buscarCliente(Integer id) {
+        return listaClientes.get(id);
+
+    }
+
+    public void añadirCliente(Cliente cliente) {
+        listaClientes.add(cliente);
+
+    }
+
+    public void eliminarCliente(Cliente cliente) {
+        listaClientes.remove(cliente);
+
+    }
+    
+    public List<Cliente> listarClientes() {
+        return listaClientes;
+    }
 }

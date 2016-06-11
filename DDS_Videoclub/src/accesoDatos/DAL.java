@@ -144,4 +144,12 @@ public class DAL {
             reservaDAO.crearReserva(reserva);
         } catch (DAOExcepcion e) {}
     }
+    
+    public List<ReservaDTO> obtenerReservas() {
+        try {
+            return reservaDAO.obtenerReservas();
+        } catch (DAOExcepcion e) {
+            return null;
+        }
+    }
 }
