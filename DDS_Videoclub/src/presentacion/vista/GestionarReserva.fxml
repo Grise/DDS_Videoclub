@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="327.0" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8">
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="327.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView layoutX="155.0" layoutY="14.0" prefHeight="349.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
@@ -14,7 +15,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="60.0" layoutY="361.0" mnemonicParsing="false" text="Editar" AnchorPane.leftAnchor="60.0" />
-      <Button layoutX="195.0" layoutY="361.0" mnemonicParsing="false" text="Eliminar" AnchorPane.rightAnchor="60.0" />
+      <Button layoutX="6.0" layoutY="361.0" mnemonicParsing="false" text="Editar" AnchorPane.leftAnchor="6.0" />
+      <Button layoutX="218.0" layoutY="361.0" mnemonicParsing="false" text="Eliminar" AnchorPane.rightAnchor="9.0" />
+      <Button layoutX="103.0" layoutY="362.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="106.0" text="Finalizar" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="118.0" />
    </children>
 </AnchorPane>
