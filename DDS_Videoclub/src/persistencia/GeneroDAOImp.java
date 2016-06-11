@@ -5,6 +5,8 @@ import persistencia.dto.GeneroDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GeneroDAOImp implements IGeneroDAO {
 
@@ -35,4 +37,29 @@ public class GeneroDAOImp implements IGeneroDAO {
             throw new DAOExcepcion(e);
         }
     }
+    
+    public List<GeneroDTO> obtenerGeneros() throws DAOExcepcion {
+		try{
+			connectionManager.connect();
+			ResultSet rs=connectionManager.queryDB("select * from GENERO");						
+			connectionManager.close();
+	  	  
+			List<GeneroDTO> listaGeneroDTO = new ArrayList<GeneroDTO>();
+				
+			try{				
+				while (rs.next()){
+
+					GeneroDTO generoDTO = new GeneroDTO(
+							rs.getInt("ID"),
+                                                        rs.getString("NOMBRE"));	 
+					listaGeneroDTO.add(generoDTO);
+				}
+				return listaGeneroDTO;
+			}
+			catch (Exception e){	throw new DAOExcepcion(e);}
+		}
+		catch (SQLException e){	throw new DAOExcepcion(e);}	
+		catch (DAOExcepcion e){		throw e;}
+
+	}
 }
