@@ -69,8 +69,8 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
         imagenModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorModificarUsuarios.class).show());
         textoModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorModificarUsuarios.class).show());
 
-        imagenGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReserva.class).show());
-        textoGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReserva.class).show());
+        imagenGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReservas.class).show());
+        textoGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReservas.class).show());
 
         /* TODO
         imagenAdministracion.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
