@@ -5,28 +5,32 @@ import java.util.ArrayList;
 class Pelicula implements Subject {
     private int id;
     private String nombre;
+    private int anno;
     private Director director;
     private Genero genero;
     private int stock;
     private String estado;
     private static ArrayList<observador> observadores = new ArrayList<observador>();
 
-    public Pelicula(int id, String nombre, Director director, Genero genero, int stock) {
+    public Pelicula(int id, String nombre, int anno, Director director, Genero genero, int stock) {
         this.id = id;
         this.nombre = nombre;
+        this.anno = anno;
         this.director = director;
         this.genero = genero;
         this.stock = stock;
     }
 
-    public Pelicula(String nombre, Director director, Genero genero, int stock){
+    public Pelicula(String nombre, int anno, Director director, Genero genero, int stock){
         this.nombre = nombre;
+        this.anno = anno;
         this.director = director;
         this.genero = genero;
         this.stock = stock;
     }
-    public Pelicula(String nombre, Director director, Genero genero, int stock, String estado){
+    public Pelicula(String nombre, int anno, Director director, Genero genero, int stock, String estado){
         this.nombre = nombre;
+        this.anno = anno;
         this.director = director;
         this.genero = genero;
         this.stock = stock;
@@ -59,6 +63,10 @@ class Pelicula implements Subject {
     public String getNombre() {
         return nombre;
     }
+    
+    public int getAnno() {
+        return anno;
+    }
 
     public Director getDirector() {
         return director;
@@ -82,6 +90,10 @@ class Pelicula implements Subject {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public void setAnno(int anno) {
+        this.anno = anno;
     }
 
     public void setDirector(Director director) {

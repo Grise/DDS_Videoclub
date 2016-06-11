@@ -91,6 +91,7 @@ public final class AlquilerPeliculasLogica {
         for (PeliculaDTO peliculaDTO : listaPeliculasDTO) {
             añadirPelicula(new Pelicula(peliculaDTO.getId(),
                     peliculaDTO.getNombre(),
+                    peliculaDTO.getAnno(),
                     buscarDirector(peliculaDTO.getDirector()),
                     buscarGenero(peliculaDTO.getGenero()),
                     peliculaDTO.getStock()));
