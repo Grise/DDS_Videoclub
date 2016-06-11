@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ControladorGestionarReserva extends ControladorCasoDeUso {
+public class ControladorGestionarReservas extends ControladorCasoDeUso {
 
 
     @FXML
