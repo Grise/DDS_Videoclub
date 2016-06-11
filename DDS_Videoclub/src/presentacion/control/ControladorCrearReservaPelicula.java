@@ -63,16 +63,7 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
 
         rellenarTableView();
 
-        botonAceptar.setOnAction(event -> {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("../vista/CrearReserva.fxml"));
-            ControladorCrearReserva c = fxmlLoader.getController();
-            c.pelicula = tableViewPeliculas.getSelectionModel().getSelectedItem();
-            c.textoEscogerPelicula.setText(c.pelicula.getNombre());
-            stage.close();
-
-            controladorCrearReserva
-        });
+        botonAceptar.setOnAction(event -> {});
     }
 
     private void rellenarTableView(){
