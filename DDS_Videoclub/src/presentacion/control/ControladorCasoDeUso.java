@@ -11,6 +11,7 @@ import java.io.IOException;
 public abstract class ControladorCasoDeUso implements Initializable {
     protected Stage stage;
     protected ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado;
+    protected static ControladorCrearReserva controladorCrearReservaBackup;
 
     public void setControladorPrincipal(ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado) {
         this.controladorMenuPrincipalEmpleado = controladorMenuPrincipalEmpleado;
@@ -40,6 +41,7 @@ public abstract class ControladorCasoDeUso implements Initializable {
     }
 
     public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorCrearReserva controladorCrearReserva) {
+        controladorCrearReservaBackup = controladorCrearReserva;
         FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
         T controlador = null;
         try {

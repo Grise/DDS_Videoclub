@@ -18,6 +18,8 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
 
     public Pelicula pelicula;
 
+    public String prueba = "IDIOTA";
+
     @FXML
     private Stage primaryStage;
     @FXML
@@ -62,6 +64,6 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
     }
 
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
-        return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, ControladorCrearReserva.this);
+        return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, this);
     }
 }
