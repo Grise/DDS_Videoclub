@@ -8,12 +8,15 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import logica.Pelicula;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControladorCrearReserva extends ControladorCasoDeUso {
     private static final String MENU_RESERVA_PELICULA = "../vista/CrearReservaPelicula.fxml";
+
+    public Pelicula pelicula;
 
     @FXML
     private Stage primaryStage;
@@ -33,7 +36,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
     private Button botonAceptar;
 
     @FXML
-    private Label textoEscogerPelicula;
+    public Label textoEscogerPelicula;
 
     @FXML
     private TextField inputDNI;
@@ -54,6 +57,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
             Stage stageActual = (Stage) botonCancelar.getScene().getWindow();
             stageActual.close();
         });
+
         botonEscogerPelicula.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA_PELICULA, ControladorCrearReservaPelicula.class).show());
     }
 
