@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorMenuPrincipalEmpleado">
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorMenuPrincipalEmpleado">
    <children>
       <GridPane layoutX="32.0" layoutY="36.0" prefHeight="172.0" prefWidth="414.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -17,7 +22,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <ImageView fx:id="imagenCrearReserva" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets bottom="50.0" />
                </GridPane.margin>
@@ -25,7 +30,7 @@
                   <Image url="@images/clipperboard.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <ImageView fx:id="imagenAdministracion" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets bottom="50.0" />
                </GridPane.margin>
@@ -33,7 +38,7 @@
                   <Image url="@images/administracion.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <ImageView fx:id="imagenGestionarReservas" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets bottom="50.0" />
                </GridPane.margin>
@@ -41,7 +46,7 @@
                   <Image url="@images/gestionarreserva.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+            <ImageView fx:id="imagenModificarUsuarios" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets bottom="50.0" />
                </GridPane.margin>
@@ -49,7 +54,7 @@
                   <Image url="@images/users.png" />
                </image>
             </ImageView>
-            <Label text="Crear reserva" GridPane.halignment="CENTER">
+            <Label fx:id="textoCrearReserva" text="Crear reserva" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets top="170.0" />
                </GridPane.margin>
@@ -57,7 +62,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label text="Modificar Usuarios" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label fx:id="textoModificarUsuarios" text="Modificar Usuarios" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets top="170.0" />
                </GridPane.margin>
@@ -65,7 +70,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label text="Gestionar Reservas" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Label fx:id="textoGestionarReservas" text="Gestionar Reservas" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="170.0" />
                </GridPane.margin>
@@ -73,7 +78,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label text="Administracion" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Label fx:id="textoAdministracion" text="Administracion" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="170.0" />
                </GridPane.margin>
