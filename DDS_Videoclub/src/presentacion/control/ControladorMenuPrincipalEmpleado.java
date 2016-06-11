@@ -12,9 +12,13 @@ import java.util.ResourceBundle;
 
 public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
     private static final String MENU_RESERVA = "../vista/CrearReserva.fxml";
-    //TODO AÑADIR LOS MENÚS QUE FALTAN
+    private static final String MENU_MODIFICAR_USUARIOS = "../vista/ModificarUsuarios.fxml";
+    private static final String MENU_GESTIONAR_RESERVAS = "../vista/GestionarReservas.fxml";
+    //TODO private static final String MENU_ADMINISTRACION = "../vista/Administracion.fxml";
 
+    @FXML
     private Stage primaryStage;
+
     @FXML
     private ImageView imagenCrearReserva;
 
@@ -60,8 +64,18 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
          * DEFINIMOS EL COMPORTAMIENTO DE LAS IMAGENES Y LAS ETIQUETAS *
          ***************************************************************/
         imagenCrearReserva.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
-
         textoCrearReserva.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
+
+        imagenModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorModificarUsuarios.class).show());
+        textoModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorModificarUsuarios.class).show());
+
+        imagenGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReserva.class).show());
+        textoGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReserva.class).show());
+
+        /* TODO
+        imagenAdministracion.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
+        textoAdministracion.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
+        */
     }
 
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
