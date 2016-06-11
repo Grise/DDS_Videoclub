@@ -64,8 +64,6 @@ public final class AlquilerPeliculas {
         this.listaGeneros = listaGeneros;
     }
     
-    // TODO: Cargas a memoria de todas las listas
-    
     // PRECARGA EN MEMORIA
     
     private void cargaGeneros() {
@@ -109,6 +107,13 @@ public final class AlquilerPeliculas {
             buscarEmpleado(reservaDTO.getEmpleado())));
         }
 
+    }
+    
+    private void cargaSistema() {
+        cargaGeneros();
+        cargaDirectores();
+        cargaPeliculas();
+        cargaReservas();
     }
     
     // DIRECTOR
