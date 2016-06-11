@@ -59,17 +59,9 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
         /***************************************************************
          * DEFINIMOS EL COMPORTAMIENTO DE LAS IMAGENES Y LAS ETIQUETAS *
          ***************************************************************/
-        imagenCrearReserva.setOnMouseClicked(event -> {
-            initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show();
-        });
+        imagenCrearReserva.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
 
-        textoCrearReserva.setOnMouseClicked(event -> {
-            //initCasoDeUso();
-        });
-    }
-
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+        textoCrearReserva.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
     }
 
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
