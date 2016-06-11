@@ -25,16 +25,15 @@ public class MainApp extends Application {
         showOverview("../presentacion/vista/MenuPrincipalEmpleado.fxml");
     }
 
-    /**
-     * Initializes the root layout.
-     */
+
     private void initRootLayout() {
         try {
-            // Load root layout from fxml file.
+            // Cargamos el layout
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("../presentacion/vista/RootLayout.fxml"));
             rootLayout = loader.load();
-            // Show the scene containing the root layout.
+
+            // Cargamos el contenido
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -43,12 +42,8 @@ public class MainApp extends Application {
         }
     }
 
-    /**
-     * Para recargar el contenido de la ventana sin cambiar la barra de menús, tendremos que pasar la ruta de la vista como parámetro.
-     */
     private void showOverview(String rutaVista) {
         try {
-            // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource(rutaVista));
             AnchorPane overview = loader.load();
@@ -58,15 +53,6 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Returns the main stage.
-     *
-     * @return null
-     */
-    public Stage getPrimaryStage() {
-        return primaryStage;
     }
 
     public static void main(String[] args) {

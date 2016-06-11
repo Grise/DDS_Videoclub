@@ -10,25 +10,10 @@ import java.io.IOException;
 
 public abstract class ControladorCasoDeUso implements Initializable {
     protected Stage stage;
-    protected ControladorPrincipal controladorPrincipal;
+    protected ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado;
 
-    public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorPrincipal controladorPrincipal) {
-        FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
-        T controlador = null;
-        try {
-            Parent parent = fxmlLoader.load();
-            controlador = fxmlLoader.getController();
-            controlador.stage.setScene(new Scene(parent));
-            controlador.stage.initOwner(owner);
-            controlador.setControladorPrincipal(controladorPrincipal);
-        } catch (NullPointerException | IOException e) {
-            e.printStackTrace();
-        }
-        return controlador;
-    }
-
-    public void setControladorPrincipal(ControladorPrincipal controladorPrincipal) {
-        this.controladorPrincipal = controladorPrincipal;
+    public void setControladorPrincipal(ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado) {
+        this.controladorMenuPrincipalEmpleado = controladorMenuPrincipalEmpleado;
     }
 
     public Stage getStage() {
@@ -37,5 +22,34 @@ public abstract class ControladorCasoDeUso implements Initializable {
 
     public void show() {
         stage.show();
+    }
+
+    public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado) {
+        FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
+        T controlador = null;
+        try {
+            Parent parent = fxmlLoader.load();
+            controlador = fxmlLoader.getController();
+            controlador.stage.setScene(new Scene(parent));
+            controlador.stage.initOwner(owner);
+            controlador.setControladorPrincipal(controladorMenuPrincipalEmpleado);
+        } catch (NullPointerException | IOException e) {
+            e.printStackTrace();
+        }
+        return controlador;
+    }
+
+    public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorCrearReserva controladorCrearReserva) {
+        FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
+        T controlador = null;
+        try {
+            Parent parent = fxmlLoader.load();
+            controlador = fxmlLoader.getController();
+            controlador.stage.setScene(new Scene(parent));
+            controlador.stage.initOwner(owner);
+        } catch (NullPointerException | IOException e) {
+            e.printStackTrace();
+        }
+        return controlador;
     }
 }
