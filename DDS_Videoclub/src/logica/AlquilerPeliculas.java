@@ -24,6 +24,7 @@ public final class AlquilerPeliculas {
     
     private AlquilerPeliculas() {
         this.dal = DAL.dameDAL();
+        cargaSistema();
     }
     
     public static AlquilerPeliculas dameAlquilerPeliculasLogica() {
@@ -113,7 +114,7 @@ public final class AlquilerPeliculas {
         cargaGeneros();
         cargaDirectores();
         cargaPeliculas();
-        cargaReservas();
+        //cargaReservas();
     }
     
     // DIRECTOR

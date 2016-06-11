@@ -55,11 +55,11 @@ public class PeliculaDAOImp implements IPeliculaDAO {
 
 					PeliculaDTO peliculaDTO = new PeliculaDTO(
 							rs.getInt("ID"),
-                                                        rs.getString("NOMBRE"),
-                                                        rs.getInt("ANNO"),
-                                                        rs.getInt("DIRECTOR"),
-                                                        rs.getInt("GENERO"),
-							rs.getInt("STOCK"));	 
+                            rs.getString("NOMBRE"),
+                            rs.getInt("ANNO"),
+                            rs.getInt("DIRECTOR"),
+                            rs.getInt("GENERO"),
+                            rs.getInt("STOCK"));
 					listaPeliculaDTO.add(peliculaDTO);
 				}
 				return listaPeliculaDTO;

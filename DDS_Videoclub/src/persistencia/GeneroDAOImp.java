@@ -44,7 +44,7 @@ public class GeneroDAOImp implements IGeneroDAO {
             ResultSet rs = connectionManager.queryDB("select * from GENERO");
             connectionManager.close();
 
-            List<GeneroDTO> listaGeneroDTO = new ArrayList<GeneroDTO>();
+            List<GeneroDTO> listaGeneroDTO = new ArrayList<>();
 
             try {
                 while (rs.next()) {
