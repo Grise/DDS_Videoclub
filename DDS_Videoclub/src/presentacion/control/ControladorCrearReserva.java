@@ -8,13 +8,12 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import logica.AlquilerPeliculas;
-import logica.Cliente;
-import logica.Pelicula;
+import logica.*;
 
 import java.net.URL;
-import java.util.Iterator;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class ControladorCrearReserva extends ControladorCasoDeUso {
     private static final String MENU_RESERVA_PELICULA = "/presentacion/vista/CrearReservaPelicula.fxml";
@@ -56,8 +55,29 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
          * DEFINIMOS EL COMPORTAMIENTO DE LOS BOTONES *
          **********************************************/
         botonAceptar.setOnMouseClicked(event -> {
-            //TODO
-            AlquilerPeliculas.dameAlquilerPeliculasLogica().
+            int id = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaReservas().size();
+            LocalDate localDatefechaDesde = datePickerDesde.getValue();
+            LocalDate localDatefechaHasta = datePickerHasta.getValue();
+
+            Date fechaDesde = java.sql.Date.valueOf(localDatefechaDesde);
+            Date fechaHasta = java.sql.Date.valueOf(localDatefechaHasta);
+
+            StringTokenizer stringTokenizer = new StringTokenizer(comboBoxDNI.getValue(), " -");
+            String dni = stringTokenizer.nextToken();
+            Cliente cliente = AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarCliente(dni);
+            Random r = new Random();
+            int rMaximo = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados().size()-1;
+            int empleadoRandom=0;
+            if(rMaximo!=0)
+                empleadoRandom = r.nextInt(rMaximo);
+            Empleado empleado = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados().get(empleadoRandom);
+
+            Reserva reserva = new Reserva(id, fechaDesde, fechaHasta, pelicula, cliente, empleado);
+
+            AlquilerPeliculas.dameAlquilerPeliculasLogica().crearReserva(reserva);
+
+            //TODO MOSTRAR ALERT OK Y CERRAR
+            System.out.println("INSERTAO");
         });
 
         botonCancelar.setOnMouseClicked(event -> {

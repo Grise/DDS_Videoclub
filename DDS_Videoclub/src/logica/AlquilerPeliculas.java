@@ -10,6 +10,7 @@ import persistencia.dto.ReservaDTO;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public final class AlquilerPeliculas {
 
@@ -138,11 +139,21 @@ public final class AlquilerPeliculas {
 
     }
 
+    private void cargaEmpleados() {
+        List<PersonaDTO> listaEmpleadosDTO = dal.obtenerEmpleados();
+        for (PersonaDTO empleadoDTO : listaEmpleadosDTO) {
+            annadirEmpleado((Empleado) personaFabrica.crearPersona(empleadoDTO.getId(), empleadoDTO.getDni(),
+                    empleadoDTO.getNombre(), empleadoDTO.getTipo()));
+        }
+
+    }
+
     private void cargaSistema() {
         cargaGeneros();
         cargaDirectores();
         cargaPeliculas();
         cargaClientes();
+        cargaEmpleados();
         //cargaReservas();
     }
 
@@ -244,6 +255,16 @@ public final class AlquilerPeliculas {
         while (iterator.hasNext()) {
             Cliente cliente = iterator.next();
             if (cliente.getId() == id)
+                return cliente;
+        }
+        return null;
+    }
+
+    public Cliente buscarCliente(String dni) {
+        Iterator<Cliente> iterator = listaClientes.iterator();
+        while (iterator.hasNext()) {
+            Cliente cliente = iterator.next();
+            if (Objects.equals(cliente.getDni(), dni))
                 return cliente;
         }
         return null;

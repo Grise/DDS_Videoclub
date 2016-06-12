@@ -1,6 +1,6 @@
 package logica;
 
-class Empleado extends Persona{
+public class Empleado extends Persona{
     private int id;
     private String nombre, dni, tipo;
 

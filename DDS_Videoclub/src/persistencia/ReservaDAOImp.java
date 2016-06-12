@@ -47,8 +47,8 @@ public class ReservaDAOImp implements IReservaDAO {
     public void crearReserva(ReservaDTO reserva) throws DAOExcepcion {
         try {
             connectionManager.connect();
-            connectionManager
-                    .updateDB("insert into RESERVA (ID, FECHA, PELICULA, CLIENTE, EMPLEADO) values('"
+
+            connectionManager.updateDB("insert into RESERVA (FECHA_INICIO, FECHA_FIN, PELICULA, CLIENTE, EMPLEADO) values('"
                             + reserva.getFechaInicio()
                             + "','"
                             + reserva.getFechaFin()
