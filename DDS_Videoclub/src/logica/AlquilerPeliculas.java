@@ -210,6 +210,17 @@ public final class AlquilerPeliculas {
 
     // RESERVA
 
+    public void crearReserva(Reserva reserva) {
+        ReservaDTO reservaDTO = new ReservaDTO(reserva.getId(),
+                reserva.getFecha(),
+                reserva.getPelicula().getId(),
+                reserva.getCliente().getId(),
+                reserva.getEmpleado().getId());
+        annadirReserva(reserva);
+        dal.crearReserva(reservaDTO);
+
+    }
+
     public Reserva buscarReserva(Integer id) {
         return listaReservas.get(id);
 
