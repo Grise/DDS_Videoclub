@@ -53,9 +53,6 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
     @FXML
     private Button botonAceptar;
 
-    @FXML
-    private Button botonBuscar;
-
     private ObservableList<Pelicula> masterData = FXCollections.observableArrayList();
 
     @Override
@@ -135,14 +132,6 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
                     controladorCrearReservaBackup.pelicula = peliculaElegida;
                     controladorCrearReservaBackup.textoEscogerPelicula.setText(peliculaElegida.getNombre());
                     stage.close();
-        });
-
-        botonBuscar.setOnAction(event -> {
-            tableViewPeliculas.getItems().clear();
-            String titulo = inputPelicula.getText();
-            String director = inputDirector.getText();
-            //TODO: HAY QUE BUSCAR EL GÉNERO PILLANDOLO DE LA ETIQUETA COMO STRING EN LA MEMORIA
-            Genero genero = AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarGenero(comboBoxGenero.getSelectionModel().getSelectedItem().toString());
         });
     }
 

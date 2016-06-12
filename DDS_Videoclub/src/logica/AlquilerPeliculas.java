@@ -128,10 +128,20 @@ public final class AlquilerPeliculas {
 
     }
 
+    private void cargaClientes() {
+        List<PersonaDTO> listaClientesDTO = dal.obtenerClientes();
+        for (PersonaDTO clienteDTO : listaClientesDTO) {
+            annadirCliente((Cliente) personaFabrica.crearPersona(clienteDTO.getId(), clienteDTO.getDni(),
+                    clienteDTO.getNombre(), clienteDTO.getTipo()));
+        }
+
+    }
+
     private void cargaSistema() {
         cargaGeneros();
         cargaDirectores();
         cargaPeliculas();
+        cargaClientes();
         //cargaReservas();
     }
 

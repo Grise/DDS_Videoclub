@@ -1,6 +1,6 @@
 package logica;
 
-class Cliente extends Persona {
+public class Cliente extends Persona {
     private int id;
     private String dni, nombre, tipo;
 

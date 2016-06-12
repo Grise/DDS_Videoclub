@@ -12,4 +12,8 @@ public interface IPersonaDAO {
     void crearPersona(PersonaDTO personaDTO) throws DAOExcepcion;
 
     List<PersonaDTO> obtenerDirectores() throws DAOExcepcion;
+
+    List<PersonaDTO> obtenerClientes() throws DAOExcepcion;
+
+    List<PersonaDTO> obtenerEmpleados() throws DAOExcepcion;
 }

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="220.0" prefWidth="504.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorCrearReserva">
+<AnchorPane id="AnchorPane" prefHeight="260.0" prefWidth="504.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorCrearReserva">
    <children>
-      <DatePicker fx:id="datePickerDesde" layoutX="14.0" layoutY="134.0" />
-      <DatePicker fx:id="datePickerHasta" layoutX="261.0" layoutY="134.0" />
+      <DatePicker fx:id="datePickerDesde" layoutX="14.0" layoutY="153.0" />
+      <DatePicker fx:id="datePickerHasta" layoutX="257.0" layoutY="153.0" />
       <Button fx:id="botonEscogerPelicula" layoutX="11.0" layoutY="26.0" mnemonicParsing="false" text="Escoger Película" />
-      <Button fx:id="botonCancelar" layoutX="388.0" layoutY="181.0" mnemonicParsing="false" text="Cancelar" />
-      <Button fx:id="botonAceptar" layoutX="273.0" layoutY="181.0" mnemonicParsing="false" text="Aceptar" />
-      <TextField fx:id="inputDNI" layoutX="113.0" layoutY="72.0" prefHeight="25.0" prefWidth="138.0" />
-      <Label layoutX="14.0" layoutY="80.0" text="DNI usuario:" />
-      <Label fx:id="textoEscogerPelicula" layoutX="182.0" layoutY="32.0" text="Pelicula seleccionada" />
-      <Label layoutX="14.0" layoutY="108.0" text="Desde:" />
-      <Label layoutX="261.0" layoutY="108.0" text="Hasta:" />
+      <Button fx:id="botonCancelar" layoutX="386.0" layoutY="215.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="botonAceptar" layoutX="278.0" layoutY="215.0" mnemonicParsing="false" text="Aceptar" />
+      <Label layoutX="16.0" layoutY="93.0" text="DNI usuario:" />
+      <Label fx:id="textoEscogerPelicula" layoutX="182.0" layoutY="32.0" text="Escoja una película" />
+      <Label layoutX="14.0" layoutY="129.0" text="Desde:" />
+      <Label layoutX="257.0" layoutY="129.0" text="Hasta:" />
+      <ComboBox fx:id="comboBoxDNI" layoutX="121.0" layoutY="85.0" prefHeight="37.0" prefWidth="202.0" />
    </children>
 </AnchorPane>

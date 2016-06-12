@@ -64,8 +64,22 @@ public class DAL {
             return null;
         }
     }
-    
-    // TODO: EMPLEADO Y CLIENTE OBTNERLOS
+
+    public List<PersonaDTO> obtenerClientes() {
+        try {
+            return personaDAO.obtenerClientes();
+        } catch (DAOExcepcion e) {
+            return null;
+        }
+    }
+
+    public List<PersonaDTO> obtenerEmpleados() {
+        try {
+            return personaDAO.obtenerEmpleados();
+        } catch (DAOExcepcion e) {
+            return null;
+        }
+    }
     
     // GENERO
     
