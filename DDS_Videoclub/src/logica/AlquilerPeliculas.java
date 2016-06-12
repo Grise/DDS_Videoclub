@@ -2,12 +2,14 @@
 package logica;
 
 import accesoDatos.DAL;
+import persistencia.dto.GeneroDTO;
+import persistencia.dto.PeliculaDTO;
+import persistencia.dto.PersonaDTO;
+import persistencia.dto.ReservaDTO;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
-
-import persistencia.dto.*;
 
 public final class AlquilerPeliculas {
 
@@ -136,8 +138,13 @@ public final class AlquilerPeliculas {
     // DIRECTOR
 
     public Director buscarDirector(Integer id) {
-        return listaDirectores.get(id);
-
+        Iterator<Director> iterator = listaDirectores.iterator();
+        while (iterator.hasNext()) {
+            Director director = iterator.next();
+            if (director.getId() == id)
+                return director;
+        }
+        return null;
     }
 
     public void annadirDirector(Director director) {
@@ -200,8 +207,13 @@ public final class AlquilerPeliculas {
     // CLIENTE
 
     public Cliente buscarCliente(Integer id) {
-        return listaClientes.get(id);
-
+        Iterator<Cliente> iterator = listaClientes.iterator();
+        while (iterator.hasNext()) {
+            Cliente cliente = iterator.next();
+            if (cliente.getId() == id)
+                return cliente;
+        }
+        return null;
     }
 
     public void annadirCliente(Cliente cliente) {
@@ -212,8 +224,13 @@ public final class AlquilerPeliculas {
     // EMPLEADO
 
     public Empleado buscarEmpleado(Integer id) {
-        return listaEmpleados.get(id);
-
+        Iterator<Empleado> iterator = listaEmpleados.iterator();
+        while (iterator.hasNext()) {
+            Empleado empleado = iterator.next();
+            if (empleado.getId() == id)
+                return empleado;
+        }
+        return null;
     }
 
     public void annadirEmpleado(Empleado empleado) {
