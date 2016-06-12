@@ -72,6 +72,11 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
          *********************************/
         botonCancelar.setOnAction(event -> stage.close());
 
+        tableViewPeliculas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            botonAceptar.setDisable(false);
+        });
+
+        botonAceptar.setDisable(true);
         botonAceptar.setOnAction(event -> {
                     Pelicula peliculaElegida= tableViewPeliculas.getSelectionModel().getSelectedItem();
                     controladorCrearReservaBackup.pelicula = peliculaElegida;
@@ -97,7 +102,6 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
         }
     }
 
-    //
     private void rellenarTableView() {
         tableColumnTitulo.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getNombre()));
         tableColumnAnno.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getAnno()));
