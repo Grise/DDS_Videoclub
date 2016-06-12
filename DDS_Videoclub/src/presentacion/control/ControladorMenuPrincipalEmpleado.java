@@ -14,7 +14,7 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
     private static final String MENU_RESERVA = "/presentacion/vista/CrearReserva.fxml";
     private static final String MENU_MODIFICAR_USUARIOS = "/presentacion/vista/ModificarUsuarios.fxml";
     private static final String MENU_GESTIONAR_RESERVAS = "/presentacion/vista/GestionarReservas.fxml";
-    //TODO private static final String MENU_ADMINISTRACION = "../vista/Administracion.fxml";
+    private static final String MENU_ADMINISTRACION = "/presentacion/vista/Configuracion.fxml";
 
     @FXML
     private Stage primaryStage;
@@ -72,10 +72,10 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
         imagenGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReservas.class).show());
         textoGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReservas.class).show());
 
-        /* TODO
-        imagenAdministracion.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
-        textoAdministracion.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
-        */
+        
+        imagenAdministracion.setOnMouseClicked(event -> initCasoDeUso(MENU_ADMINISTRACION, ControladorConfiguracion.class).show());
+        textoAdministracion.setOnMouseClicked(event -> initCasoDeUso(MENU_ADMINISTRACION, ControladorConfiguracion.class).show());
+        
     }
 
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
