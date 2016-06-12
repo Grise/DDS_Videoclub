@@ -163,6 +163,16 @@ public final class AlquilerPeliculas {
 
     }
 
+    public Genero buscarGenero(String generoBuscar) {
+        Iterator<Genero> iterator = listaGeneros.iterator();
+        while (iterator.hasNext()) {
+            Genero genero = iterator.next();
+            if (genero.getNombre() == generoBuscar)
+                return genero;
+        }
+        return null;
+    }
+
     public void annadirGenero(Genero genero) {
         listaGeneros.add(genero);
 
@@ -237,5 +247,4 @@ public final class AlquilerPeliculas {
         listaEmpleados.add(empleado);
 
     }
-
 }

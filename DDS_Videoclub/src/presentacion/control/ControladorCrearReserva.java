@@ -58,6 +58,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
             stageActual.close();
         });
 
+
         botonEscogerPelicula.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA_PELICULA, ControladorCrearReservaPelicula.class).show());
     }
 

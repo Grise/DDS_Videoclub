@@ -62,7 +62,7 @@ public class PersonaDAOImp implements IPersonaDAO {
             ResultSet resultSet = connectionManager.queryDB("select * from PERSONA where TIPO= 'DIRECTOR'");
             connectionManager.close();
 
-            List<PersonaDTO> listaDirectorDTO = new ArrayList<>();
+            List<PersonaDTO> listaPersonasDTO = new ArrayList<>();
 
             try {
                 while (resultSet.next()) {
@@ -73,9 +73,9 @@ public class PersonaDAOImp implements IPersonaDAO {
                             resultSet.getString("NOMBRE"),
                             resultSet.getString("TIPO")
                     );
-                    listaDirectorDTO.add(personaDTO);
+                    listaPersonasDTO.add(personaDTO);
                 }
-                return listaDirectorDTO;
+                return listaPersonasDTO;
             } catch (Exception e) {
                 throw new DAOExcepcion(e);
             }
@@ -84,8 +84,65 @@ public class PersonaDAOImp implements IPersonaDAO {
         } catch (DAOExcepcion e) {
             throw e;
         }
-
     }
 
-    // TODO: Obtener clientes y empleados
+    public List<PersonaDTO> obtenerEmpleados() throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            ResultSet resultSet = connectionManager.queryDB("select * from PERSONA where TIPO= 'EMPLEADO'");
+            connectionManager.close();
+
+            List<PersonaDTO> listaPersonasDTO = new ArrayList<>();
+
+            try {
+                while (resultSet.next()) {
+
+                    PersonaDTO personaDTO = new PersonaDTO(
+                            resultSet.getInt("ID"),
+                            resultSet.getString("DNI"),
+                            resultSet.getString("NOMBRE"),
+                            resultSet.getString("TIPO")
+                    );
+                    listaPersonasDTO.add(personaDTO);
+                }
+                return listaPersonasDTO;
+            } catch (Exception e) {
+                throw new DAOExcepcion(e);
+            }
+        } catch (SQLException e) {
+            throw new DAOExcepcion(e);
+        } catch (DAOExcepcion e) {
+            throw e;
+        }
+    }
+
+    public List<PersonaDTO> obtenerClientes() throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            ResultSet resultSet = connectionManager.queryDB("select * from PERSONA where TIPO= 'CLIENTE'");
+            connectionManager.close();
+
+            List<PersonaDTO> listaPersonasDTO = new ArrayList<>();
+
+            try {
+                while (resultSet.next()) {
+
+                    PersonaDTO personaDTO = new PersonaDTO(
+                            resultSet.getInt("ID"),
+                            resultSet.getString("DNI"),
+                            resultSet.getString("NOMBRE"),
+                            resultSet.getString("TIPO")
+                    );
+                    listaPersonasDTO.add(personaDTO);
+                }
+                return listaPersonasDTO;
+            } catch (Exception e) {
+                throw new DAOExcepcion(e);
+            }
+        } catch (SQLException e) {
+            throw new DAOExcepcion(e);
+        } catch (DAOExcepcion e) {
+            throw e;
+        }
+    }
 }

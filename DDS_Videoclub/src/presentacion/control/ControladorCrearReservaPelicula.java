@@ -1,6 +1,10 @@
 package presentacion.control;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
@@ -12,7 +16,6 @@ import logica.Pelicula;
 
 import java.net.URL;
 import java.util.Iterator;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -53,6 +56,8 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
     @FXML
     private Button botonBuscar;
 
+    private ObservableList<Pelicula> masterData = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stage = new Stage(StageStyle.DECORATED);
@@ -62,11 +67,59 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
         rellenarComboBoxGeneros();
         rellenarTableView();
 
-        comboBoxGenero.valueProperty().addListener(observable -> {
-            botonBuscar.fire();
+        FilteredList<Pelicula> filteredData = new FilteredList<>(masterData, p -> true);
+
+        inputDirector.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(eventoDirector -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (eventoDirector.getDirector().getNombre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
         });
 
+        inputPelicula.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(eventoPelicula -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
 
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (eventoPelicula.getNombre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        comboBoxGenero.valueProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(eventoGenero -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (eventoGenero.getGenero().getNombre().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+            });
+        });
+
+        System.out.println(filteredData);
+        SortedList<Pelicula> sortedData = new SortedList<>(filteredData);
+
+        sortedData.comparatorProperty().bind(tableViewPeliculas.comparatorProperty());
+
+        tableViewPeliculas.setItems(sortedData);
         /*********************************
          * COMPORTAMIENTO DE LOS BOTONES *
          *********************************/
@@ -89,8 +142,7 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
             String titulo = inputPelicula.getText();
             String director = inputDirector.getText();
             //TODO: HAY QUE BUSCAR EL GÉNERO PILLANDOLO DE LA ETIQUETA COMO STRING EN LA MEMORIA
-            Genero genero = null;
-            rellenarTableView(titulo, genero, director);
+            Genero genero = AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarGenero(comboBoxGenero.getSelectionModel().getSelectedItem().toString());
         });
     }
 
@@ -109,21 +161,7 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
         tableColumnDirector.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getDirector().getNombre()));
         tableColumnDisponible.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getStockBooleano()));
 
-        List<Pelicula> listaPeliculas = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaPeliculas();
-        this.tableViewPeliculas.getItems().addAll(listaPeliculas);
-    }
-
-    //TODO EL TABLE VIEW TIENE QUE MOSTRAR LA INFORMACIÓN SELECCIONADA EN LOS FILTROS
-    private void rellenarTableView(String titulo, Genero genero, String director) {
-        System.out.println("SOY ESPECIAL");
-
-        tableColumnTitulo.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getNombre()));
-        tableColumnAnno.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getAnno()));
-        tableColumnGenero.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getGenero().getNombre()));
-        tableColumnDirector.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getDirector().getNombre()));
-        tableColumnDisponible.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getStockBooleano()));
-
-        List<Pelicula> listaPeliculas = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaPeliculas();
-        this.tableViewPeliculas.getItems().addAll(listaPeliculas);
+        masterData = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaPeliculas());
+        //this.tableViewPeliculas.getItems().addAll(listaPeliculas);
     }
 }
