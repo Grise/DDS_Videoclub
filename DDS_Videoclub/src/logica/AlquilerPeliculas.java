@@ -2,16 +2,15 @@
 package logica;
 
 import accesoDatos.DAL;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-import persistencia.dto.DirectorDTO;
-import persistencia.dto.GeneroDTO;
-import persistencia.dto.PeliculaDTO;
-import persistencia.dto.ReservaDTO;
+
+import persistencia.dto.*;
 
 public final class AlquilerPeliculas {
-    
+
     private AlquilerPeliculas Alquiler;
     private static AlquilerPeliculas INSTANCIA = new AlquilerPeliculas();
     private DAL dal;
@@ -19,18 +18,19 @@ public final class AlquilerPeliculas {
     private List<Cliente> listaClientes = new ArrayList<>();
     private List<Reserva> listaReservas = new ArrayList<>();
     private List<Pelicula> listaPeliculas = new ArrayList<>();
-    private Hashtable<Integer, Director> listaDirectores = new Hashtable<>();
-    private Hashtable<Integer, Genero> listaGeneros = new Hashtable<>();
-    
+    private List<Director> listaDirectores = new ArrayList<>();
+    private List<Genero> listaGeneros = new ArrayList<>();
+    PersonaFabrica personaFabrica = new PersonaFabrica();
+
     private AlquilerPeliculas() {
         this.dal = DAL.dameDAL();
         cargaSistema();
     }
-    
+
     public static AlquilerPeliculas dameAlquilerPeliculasLogica() {
         return INSTANCIA;
     }
-    
+
     // GETTERS Y SETTERS
 
     public List<Cliente> getListaClientes() {
@@ -49,24 +49,40 @@ public final class AlquilerPeliculas {
         this.listaReservas = listaReservas;
     }
 
-    public Hashtable<Integer, Director> getListaDirectores() {
+    public List<Director> getListaDirectores() {
         return listaDirectores;
     }
 
-    public void setListaDirectores(Hashtable<Integer, Director> listaDirectores) {
+    public void setListaDirectores(List<Director> listaDirectores) {
         this.listaDirectores = listaDirectores;
     }
 
-    public Hashtable<Integer, Genero> getListaGeneros() {
+    public List<Genero> getListaGeneros() {
         return listaGeneros;
     }
 
-    public void setListaGeneros(Hashtable<Integer, Genero> listaGeneros) {
+    public void setListaGeneros(List<Genero> listaGeneros) {
         this.listaGeneros = listaGeneros;
     }
-    
+
+    public List<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public void setListaEmpleados(List<Empleado> listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
+    }
+
+    public List<Pelicula> getListaPeliculas() {
+        return listaPeliculas;
+    }
+
+    public void setListaPeliculas(List<Pelicula> listaPeliculas) {
+        this.listaPeliculas = listaPeliculas;
+    }
+
     // PRECARGA EN MEMORIA
-    
+
     private void cargaGeneros() {
         List<GeneroDTO> listaGenerosDTO = dal.obtenerGeneros();
         for (GeneroDTO generoDTO : listaGenerosDTO) {
@@ -75,16 +91,16 @@ public final class AlquilerPeliculas {
         }
 
     }
-    
+
     private void cargaDirectores() {
-        List<DirectorDTO> listaDirectoresDTO = dal.obtenerDirectores();
-        for (DirectorDTO directorDTO : listaDirectoresDTO) {
-            annadirDirector(new Director(directorDTO.getId(),
-                    directorDTO.getNombre()));
+        List<PersonaDTO> listaDirectoresDTO = dal.obtenerDirectores();
+        for (PersonaDTO directorDTO : listaDirectoresDTO) {
+            annadirDirector((Director) personaFabrica.crearPersona(directorDTO.getId(), directorDTO.getDni(),
+                    directorDTO.getNombre(), directorDTO.getTipo()));
         }
 
     }
-    
+
     private void cargaPeliculas() {
         List<PeliculaDTO> listaPeliculasDTO = dal.obtenerPeliculas();
         for (PeliculaDTO peliculaDTO : listaPeliculasDTO) {
@@ -97,78 +113,60 @@ public final class AlquilerPeliculas {
         }
 
     }
-    
+
     private void cargaReservas() {
         List<ReservaDTO> listaReservasDTO = dal.obtenerReservas();
         for (ReservaDTO reservaDTO : listaReservasDTO) {
             annadirReserva(new Reserva(reservaDTO.getId(),
                     reservaDTO.getFecha(),
-            buscarPelicula(reservaDTO.getPelicula()),
-            buscarCliente(reservaDTO.getCliente()),
-            buscarEmpleado(reservaDTO.getEmpleado())));
+                    buscarPelicula(reservaDTO.getPelicula()),
+                    buscarCliente(reservaDTO.getCliente()),
+                    buscarEmpleado(reservaDTO.getEmpleado())));
         }
 
     }
-    
+
     private void cargaSistema() {
         cargaGeneros();
         cargaDirectores();
         cargaPeliculas();
         //cargaReservas();
     }
-    
+
     // DIRECTOR
-    
+
     public Director buscarDirector(Integer id) {
         return listaDirectores.get(id);
 
     }
 
     public void annadirDirector(Director director) {
-        listaDirectores.put(director.getId(), director);
+        listaDirectores.add(director);
 
     }
 
-    public void eliminarDirector(Director director) {
-        listaDirectores.remove(director.getId());
+    private void getListaDirectoresBD() {
+        List<PersonaDTO> directorDTO = dal.obtenerDirectores();
+    }
 
-    }
-    
-    private void obtenerDirectores() {
-        List<DirectorDTO> directorDTO = dal.obtenerDirectores();
-    }
-    
-    public List<Director> listarDirectores() {
-        return new ArrayList<>(listaDirectores.values());
-    }
-    
     // GENERO
-    
+
     public Genero buscarGenero(Integer id) {
         return listaGeneros.get(id);
 
     }
 
     public void annadirGenero(Genero genero) {
-        listaGeneros.put(genero.getId(), genero);
+        listaGeneros.add(genero);
 
     }
 
-    public void eliminarGenero(Genero genero) {
-        listaGeneros.remove(genero.getId());
-
-    }
-    
-    private void obtenerGeneros() {
+    private void getListaGenerosBD() {
         List<GeneroDTO> generoDTO = dal.obtenerGeneros();
     }
-    
-    public List<Genero> listarGeneros() {
-        return new ArrayList<>(listaGeneros.values());
-    }
-    
+
     // PELICULA
-    
+
     public Pelicula buscarPelicula(Integer id) {
         return listaPeliculas.get(id);
 
@@ -179,21 +177,12 @@ public final class AlquilerPeliculas {
 
     }
 
-    public void eliminarPelicula(Pelicula pelicula) {
-        listaPeliculas.remove(pelicula);
-
-    }
-    
-    private void obtenerPeliculas() {
+    private void getListaPeliculasBD() {
         List<PeliculaDTO> peliculaDTO = dal.obtenerPeliculas();
     }
-    
-    public List<Pelicula> getListaPeliculas() {
-        return listaPeliculas;
-    }
-    
+
     // RESERVA
-    
+
     public Reserva buscarReserva(Integer id) {
         return listaReservas.get(id);
 
@@ -204,21 +193,12 @@ public final class AlquilerPeliculas {
 
     }
 
-    public void eliminarReserva(Reserva reserva) {
-        listaReservas.remove(reserva);
-
-    }
-    
-    private void obtenerReservas() {
+    private void getListaReservasBD() {
         List<ReservaDTO> reservaDTO = dal.obtenerReservas();
     }
-    
-    public List<Reserva> listarReservas() {
-        return listaReservas;
-    }
-    
+
     // CLIENTE
-    
+
     public Cliente buscarCliente(Integer id) {
         return listaClientes.get(id);
 
@@ -229,17 +209,8 @@ public final class AlquilerPeliculas {
 
     }
 
-    public void eliminarCliente(Cliente cliente) {
-        listaClientes.remove(cliente);
-
-    }
-    
-    public List<Cliente> listarClientes() {
-        return listaClientes;
-    }
-    
     // EMPLEADO
-    
+
     public Empleado buscarEmpleado(Integer id) {
         return listaEmpleados.get(id);
 
@@ -250,12 +221,4 @@ public final class AlquilerPeliculas {
 
     }
 
-    public void eliminarEmpleado(Empleado empleado) {
-        listaEmpleados.remove(empleado);
-
-    }
-    
-    public List<Empleado> listarEmpleados() {
-        return listaEmpleados;
-    }
 }

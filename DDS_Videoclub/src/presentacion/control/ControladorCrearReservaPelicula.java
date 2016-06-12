@@ -95,7 +95,7 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
     }
 
     public void rellenarComboBoxGeneros() {
-        Iterator<Genero> iterador = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaGeneros().values().iterator();
+        Iterator<Genero> iterador = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaGeneros().iterator();
         while (iterador.hasNext()) {
             String nombreGenero = iterador.next().getNombre();
             comboBoxGenero.getItems().add(nombreGenero);

@@ -2,16 +2,15 @@ package logica;
 
 class Empleado extends Persona{
     private int id;
-    private String nombre;
+    private String nombre, dni, tipo;
 
-    public Empleado(int id, String nombre) {
+    public Empleado(int id, String dni, String nombre, String tipo) {
         this.id = id;
         this.nombre = nombre;
+        this.dni = dni;
+        this.tipo = tipo;
     }
 
-    public Empleado(String empleado){
-        this.nombre=empleado;
-    }
     public int getId() {
         return id;
     }
@@ -28,4 +27,19 @@ class Empleado extends Persona{
         this.nombre = nombre;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 }

@@ -2,17 +2,14 @@ package logica;
 
 class Cliente extends Persona {
     private int id;
-    private String nombre;
+    private String dni, nombre, tipo;
 
-    public Cliente(int id, String nombre) {
+    public Cliente(int id, String dni, String nombre, String tipo) {
         this.id = id;
+        this.dni = dni;
         this.nombre = nombre;
+        this.tipo = tipo;
     }
-
-    public Cliente(String nombre) {
-        this.nombre = nombre;
-    }
-
 
     public int getId() {
         return id;
@@ -20,6 +17,10 @@ class Cliente extends Persona {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getDni() {
+        return dni;
     }
 
     public void setId(int id) {
@@ -30,4 +31,15 @@ class Cliente extends Persona {
         this.nombre = nombre;
     }
 
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }

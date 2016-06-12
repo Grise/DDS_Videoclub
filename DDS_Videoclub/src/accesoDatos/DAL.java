@@ -3,7 +3,7 @@ package accesoDatos;
 import excepciones.DAOExcepcion;
 import java.util.List;
 import persistencia.*;
-import persistencia.dto.ClienteDTO;
+import persistencia.dto.PersonaDTO;
 import persistencia.dto.DirectorDTO;
 import persistencia.dto.EmpleadoDTO;
 import persistencia.dto.GeneroDTO;
@@ -12,9 +12,7 @@ import persistencia.dto.ReservaDTO;
 
 public class DAL {
 
-    private IClienteDAO clienteDAO = new ClienteDAOImp();
-    private IEmpleadoDAO empleadoDAO = new EmpleadoDAOImp();
-    private IDirectorDAO directorDAO = new DirectorDAOImp();
+    private IPersonaDAO personaDAO = new PersonaDAOImp();
     private IPeliculaDAO peliculaDAO = new PeliculaDAOImp();
     private IReservaDAO reservaDAO = new ReservaDAOImp();
     private IGeneroDAO generoDAO = new GeneroDAOImp();
@@ -35,63 +33,39 @@ public class DAL {
 
     public DAL() throws DAOExcepcion {
         super();
-        this.clienteDAO = new ClienteDAOImp();
-        this.empleadoDAO = new EmpleadoDAOImp();
-        this.directorDAO = new DirectorDAOImp();
+        this.personaDAO = new PersonaDAOImp();
         this.peliculaDAO = new PeliculaDAOImp();
         this.reservaDAO = new ReservaDAOImp();
         this.generoDAO = new GeneroDAOImp();
     }
     
-    // CLIENTE
+    // PERSONA
     
-    public ClienteDTO buscarCliente(int id) {
+    public PersonaDTO buscarPersona(int id) {
         try {
-            return clienteDAO.buscarCliente(id);
+            return personaDAO.buscarPersona(id);
         } catch (DAOExcepcion e) {
             return null;
         }
     }
 
-    public void crearCliente(ClienteDTO cliente) {
+    public void crearPersona(PersonaDTO persona) {
         try {
-            clienteDAO.crearCliente(cliente);
+            personaDAO.crearPersona(persona);
         } catch (DAOExcepcion e) {}
     }
     
     // DIRECTOR
-    
-    public DirectorDTO buscarDirector(int id) {
-        try {
-            return directorDAO.buscarDirector(id);
-        } catch (DAOExcepcion e) {
-            return null;
-        }
-    }
-    
-    public List<DirectorDTO> obtenerDirectores() {
-        try {
-            return directorDAO.obtenerDirectores();
-        } catch (DAOExcepcion e) {
-            return null;
-        }
-    }
-    
-    // EMPLEADO
-    
-    public EmpleadoDTO buscarEmpleado(int id) {
-        try {
-            return empleadoDAO.buscarEmpleado(id);
-        } catch (DAOExcepcion e) {
-            return null;
-        }
-    }
 
-    public void crearEmpleado(EmpleadoDTO empleado) {
+    public List<PersonaDTO> obtenerDirectores() {
         try {
-            empleadoDAO.crearEmpleado(empleado);
-        } catch (DAOExcepcion e) {}
+            return personaDAO.obtenerDirectores();
+        } catch (DAOExcepcion e) {
+            return null;
+        }
     }
+    
+    // TODO: EMPLEADO Y CLIENTE OBTNERLOS
     
     // GENERO
     
