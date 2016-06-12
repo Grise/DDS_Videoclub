@@ -1,25 +1,35 @@
 package persistencia.dto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class ReservaDTO {
-    private LocalDateTime fecha;
+    private Date fechaInicio, fechaFin;
     private int id, pelicula, cliente, empleado;
 
-    public ReservaDTO(int id, LocalDateTime fecha, int pelicula, int cliente, int empleado) {
+    public ReservaDTO(int id, Date fechaInicio, Date fechaFin, int pelicula, int cliente, int empleado) {
         this.id = id;
-        this.fecha = fecha;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.pelicula = pelicula;
         this.cliente = cliente;
         this.empleado = empleado;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public int getId() {

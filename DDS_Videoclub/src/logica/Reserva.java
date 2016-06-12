@@ -1,17 +1,19 @@
 package logica;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Reserva {
     private int id;
-    private LocalDateTime fecha;
+    private Date fechaInicio;
+    private Date fechaFin;
     private Pelicula pelicula;
     private Cliente cliente;
     private Empleado empleado;
 
-    public Reserva(int id, LocalDateTime fecha, Pelicula pelicula, Cliente cliente, Empleado empleado) {
+    public Reserva(int id, Date fechaInicio, Date fechaFin, Pelicula pelicula, Cliente cliente, Empleado empleado) {
         this.id = id;
-        this.fecha = fecha;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
         this.pelicula = pelicula;
         this.cliente = cliente;
         this.empleado = empleado;
@@ -21,8 +23,12 @@ public class Reserva {
         return id;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
     }
 
     public Pelicula getPelicula() {
@@ -41,8 +47,12 @@ public class Reserva {
         this.id = id;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
     public void setPelicula(Pelicula pelicula) {

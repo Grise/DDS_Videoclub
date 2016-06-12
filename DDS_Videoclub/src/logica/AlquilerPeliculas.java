@@ -120,7 +120,8 @@ public final class AlquilerPeliculas {
         List<ReservaDTO> listaReservasDTO = dal.obtenerReservas();
         for (ReservaDTO reservaDTO : listaReservasDTO) {
             annadirReserva(new Reserva(reservaDTO.getId(),
-                    reservaDTO.getFecha(),
+                    reservaDTO.getFechaInicio(),
+                    reservaDTO.getFechaFin(),
                     buscarPelicula(reservaDTO.getPelicula()),
                     buscarCliente(reservaDTO.getCliente()),
                     buscarEmpleado(reservaDTO.getEmpleado())));
@@ -212,7 +213,8 @@ public final class AlquilerPeliculas {
 
     public void crearReserva(Reserva reserva) {
         ReservaDTO reservaDTO = new ReservaDTO(reserva.getId(),
-                reserva.getFecha(),
+                reserva.getFechaInicio(),
+                reserva.getFechaFin(),
                 reserva.getPelicula().getId(),
                 reserva.getCliente().getId(),
                 reserva.getEmpleado().getId());

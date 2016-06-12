@@ -12,7 +12,7 @@ import java.util.List;
 public class ReservaDAOImp implements IReservaDAO {
 
     private ConnectionManager connectionManager;
-    private LocalDateTime dateTime;
+    private LocalDateTime dateTimeInicio, dateTimeFin;
 
     public ReservaDAOImp() throws DAOExcepcion {
         super();
@@ -32,7 +32,8 @@ public class ReservaDAOImp implements IReservaDAO {
             if (rs.next())
                 return new ReservaDTO(
                         rs.getInt("ID"),
-                        dateTime = LocalDateTime.of(rs.getDate("FECHA").toLocalDate(), rs.getTime("FECHA").toLocalTime()),
+                        rs.getDate("FECHA_INICIO"),
+                        rs.getDate("FECHA_FIN"),
                         rs.getInt("PELICULA"),
                         rs.getInt("CLIENTE"),
                         rs.getInt("EMPLEADO"));
@@ -48,7 +49,9 @@ public class ReservaDAOImp implements IReservaDAO {
             connectionManager.connect();
             connectionManager
                     .updateDB("insert into RESERVA (ID, FECHA, PELICULA, CLIENTE, EMPLEADO) values('"
-                            + reserva.getFecha()
+                            + reserva.getFechaInicio()
+                            + "','"
+                            + reserva.getFechaFin()
                             + "','"
                             + reserva.getPelicula()
                             + "','"
@@ -74,7 +77,8 @@ public class ReservaDAOImp implements IReservaDAO {
 
                     ReservaDTO reservaDTO = new ReservaDTO(
                             rs.getInt("ID"),
-                            dateTime = LocalDateTime.of(rs.getDate("FECHA").toLocalDate(), rs.getTime("FECHA").toLocalTime()),
+                            rs.getDate("FECHA_INICIO"),
+                            rs.getDate("FECHA_FIN"),
                             rs.getInt("PELICULA"),
                             rs.getInt("CLIENTE"),
                             rs.getInt("EMPLEADO"));
