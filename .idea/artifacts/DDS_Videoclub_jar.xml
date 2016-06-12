@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DDS_Videoclub:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DDS_Videoclub_jar</output-path>
+    <root id="archive" name="DDS_Videoclub.jar">
+      <element id="module-output" name="DDS_Videoclub" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/DDS_Videoclub/lib/hsqldb.jar" path-in-jar="/" />
+      <element id="library" level="project" name="hsqldb" />
+      <element id="dir-copy" path="$USER_HOME$/Desktop/CasoVehiculos/data" />
+    </root>
+  </artifact>
+</component>

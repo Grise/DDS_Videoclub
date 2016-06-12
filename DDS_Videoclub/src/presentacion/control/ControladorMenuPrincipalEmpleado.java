@@ -11,9 +11,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
-    private static final String MENU_RESERVA = "../vista/CrearReserva.fxml";
-    private static final String MENU_MODIFICAR_USUARIOS = "../vista/ModificarUsuarios.fxml";
-    private static final String MENU_GESTIONAR_RESERVAS = "../vista/GestionarReservas.fxml";
+    private static final String MENU_RESERVA = "/presentacion/vista/CrearReserva.fxml";
+    private static final String MENU_MODIFICAR_USUARIOS = "/presentacion/vista/ModificarUsuarios.fxml";
+    private static final String MENU_GESTIONAR_RESERVAS = "/presentacion/vista/GestionarReservas.fxml";
     //TODO private static final String MENU_ADMINISTRACION = "../vista/Administracion.fxml";
 
     @FXML

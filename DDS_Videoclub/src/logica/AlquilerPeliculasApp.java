@@ -22,7 +22,7 @@ public class AlquilerPeliculasApp extends Application {
 
         initRootLayout();
 
-        showOverview("../presentacion/vista/MenuPrincipalEmpleado.fxml");
+        showOverview("/presentacion/vista/MenuPrincipalEmpleado.fxml");
     }
 
 
@@ -30,7 +30,7 @@ public class AlquilerPeliculasApp extends Application {
         try {
             // Cargamos el layout
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AlquilerPeliculasApp.class.getResource("../presentacion/vista/RootLayout.fxml"));
+            loader.setLocation(AlquilerPeliculasApp.class.getResource("/presentacion/vista/RootLayout.fxml"));
             rootLayout = loader.load();
 
             // Cargamos el contenido

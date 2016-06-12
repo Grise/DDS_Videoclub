@@ -14,11 +14,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControladorCrearReserva extends ControladorCasoDeUso {
-    private static final String MENU_RESERVA_PELICULA = "../vista/CrearReservaPelicula.fxml";
+    private static final String MENU_RESERVA_PELICULA = "/presentacion/vista/CrearReservaPelicula.fxml";
 
     public Pelicula pelicula;
-
-    public String prueba = "IDIOTA";
 
     @FXML
     private Stage primaryStage;
