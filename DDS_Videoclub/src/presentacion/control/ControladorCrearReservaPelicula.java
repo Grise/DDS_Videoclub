@@ -111,7 +111,6 @@ public class ControladorCrearReservaPelicula extends ControladorCasoDeUso {
             });
         });
 
-        System.out.println(filteredData);
         SortedList<Pelicula> sortedData = new SortedList<>(filteredData);
 
         sortedData.comparatorProperty().bind(tableViewPeliculas.comparatorProperty());

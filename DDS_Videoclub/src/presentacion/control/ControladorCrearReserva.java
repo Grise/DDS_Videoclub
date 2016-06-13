@@ -54,8 +54,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
          * DEFINIMOS EL COMPORTAMIENTO DE LOS BOTONES *
          **********************************************/
         botonAceptar.setOnMouseClicked(event -> {
-            if(textoEscogerPelicula.getText()!= "Escoja una película" || datePickerDesde.getValue() != null ||
-                    datePickerHasta.getValue() != null || comboBoxDNI.getValue() != null) {
+            if (textoEscogerPelicula.getText() != "Escoja una película" && datePickerDesde.getValue() != null && datePickerHasta.getValue() != null && comboBoxDNI.getValue() != null) {
                 int id = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaReservas().size();
                 LocalDate localDatefechaDesde = datePickerDesde.getValue();
                 LocalDate localDatefechaHasta = datePickerHasta.getValue();
@@ -82,6 +81,8 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
                 alert.setContentText("Se ha creado la nueva reserva con éxito");
 
                 alert.showAndWait();
+
+                stage.close();
             }else{
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Error");
@@ -104,10 +105,8 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
         return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, this);
     }
 
-    public void rellenarComboBoxDnis() {
-        Iterator<Cliente> iterador = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaClientes().iterator();
-        while (iterador.hasNext()) {
-            Cliente cliente = iterador.next();
+    private void rellenarComboBoxDnis() {
+        for (Cliente cliente : AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaClientes()) {
             String dniNombre = cliente.getDni() + " - " + cliente.getNombre();
             comboBoxDNI.getItems().add(dniNombre);
         }

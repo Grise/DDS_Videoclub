@@ -7,7 +7,6 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,11 +22,20 @@ import java.util.ResourceBundle;
 
 public class ControladorGestionarReservas extends ControladorCasoDeUso {
 
+    private static final String MENU_FINALIZAR_RESERVA = "/presentacion/vista/FinalizarReserva.fxml";
+
+    public Reserva reservaSeleccionada;
+    @FXML
+    private Stage primaryStage;
+
     @FXML
     private TextField peliculaTextField;
 
     @FXML
     private Button botonCancelar;
+
+    @FXML
+    private Button botonFin;
 
     @FXML
     private TableView<Reserva> tableViewReservas;
@@ -53,7 +61,7 @@ public class ControladorGestionarReservas extends ControladorCasoDeUso {
     @FXML
     private ComboBox<String> dniComboBox;
 
-    private ObservableList<Reserva> masterData = FXCollections.observableArrayList();
+    public ObservableList<Reserva> masterData = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -119,7 +127,10 @@ public class ControladorGestionarReservas extends ControladorCasoDeUso {
             masterData.remove(reservaElegida);
         });
 
-
+        botonFin.setOnAction(event -> {
+            reservaSeleccionada = tableViewReservas.getSelectionModel().getSelectedItem();
+            initCasoDeUso(MENU_FINALIZAR_RESERVA, ControladorFinalizarReserva.class).show();
+        });
     }
 
     public void rellenarComboBoxDni() {
@@ -131,7 +142,6 @@ public class ControladorGestionarReservas extends ControladorCasoDeUso {
     }
 
     private void rellenarTableView() {
-
         tableColumnPelicula.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getPelicula().getNombre()));
         tableColumnUsuario.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getCliente().getNombre()));
         tableColumnDni.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getCliente().getDni()));
@@ -139,6 +149,9 @@ public class ControladorGestionarReservas extends ControladorCasoDeUso {
         tableColumnFechaFin.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getFechaFin()));
 
         masterData = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaReservas());
+    }
 
+    private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
+        return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, this);
     }
 }

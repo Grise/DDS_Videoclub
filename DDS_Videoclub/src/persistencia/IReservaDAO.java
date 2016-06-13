@@ -14,4 +14,7 @@ public interface IReservaDAO {
 
     void eliminarReserva(int id) throws DAOExcepcion;
 
+    void finalizarReservaSinDannos(int id, String comentarios) throws DAOExcepcion;
+
+    void finalizarReservaConDannos(int id, String comentarios) throws DAOExcepcion;
 }

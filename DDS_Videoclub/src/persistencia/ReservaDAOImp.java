@@ -47,7 +47,16 @@ public class ReservaDAOImp implements IReservaDAO {
     public void crearReserva(ReservaDTO reserva) throws DAOExcepcion {
         try {
             connectionManager.connect();
-
+            String prueba = "insert into RESERVA (FECHA_INICIO, FECHA_FIN, PELICULA, CLIENTE, EMPLEADO) values('"
+                    + reserva.getFechaInicio()
+                    + "','"
+                    + reserva.getFechaFin()
+                    + "','"
+                    + reserva.getPelicula()
+                    + "','"
+                    + reserva.getCliente()
+                    + "', '"
+                    + reserva.getEmpleado() + "')";
             connectionManager.updateDB("insert into RESERVA (FECHA_INICIO, FECHA_FIN, PELICULA, CLIENTE, EMPLEADO) values('"
                             + reserva.getFechaInicio()
                             + "','"
@@ -102,6 +111,29 @@ public class ReservaDAOImp implements IReservaDAO {
             connectionManager.updateDB("delete from RESERVA where ID= '" + id + "'");
             connectionManager.close();
         } catch (Exception e) {
+            throw new DAOExcepcion(e);
+        }
+    }
+
+    @Override
+    public void finalizarReservaSinDannos(int id, String comentarios) throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            connectionManager.updateDB("update RESERVA set DEVOLUCION_DANNADA='0', COMENTARIOS='" + comentarios + "' where id=" + id);
+            connectionManager.close();
+        } catch (SQLException e) {
+            throw new DAOExcepcion(e);
+        }
+    }
+
+    @Override
+    public void finalizarReservaConDannos(int id, String comentarios) throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            String test = "update RESERVA set DEVOLUCION_DANADA=1, COMENTARIOS=" + comentarios + " where id=" + id;
+            connectionManager.updateDB("update RESERVA set DEVOLUCION_DANNADA='1', COMENTARIOS='" + comentarios + "' where id=" + id);
+            connectionManager.close();
+        } catch (SQLException e) {
             throw new DAOExcepcion(e);
         }
     }

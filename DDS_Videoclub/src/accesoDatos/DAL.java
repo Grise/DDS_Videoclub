@@ -1,14 +1,13 @@
 package accesoDatos;
 
 import excepciones.DAOExcepcion;
-import java.util.List;
 import persistencia.*;
-import persistencia.dto.PersonaDTO;
-import persistencia.dto.DirectorDTO;
-import persistencia.dto.EmpleadoDTO;
 import persistencia.dto.GeneroDTO;
 import persistencia.dto.PeliculaDTO;
+import persistencia.dto.PersonaDTO;
 import persistencia.dto.ReservaDTO;
+
+import java.util.List;
 
 public class DAL {
 
@@ -162,6 +161,18 @@ public class DAL {
     public void eliminarReserva(int id) {
         try {
             reservaDAO.eliminarReserva(id);
+        } catch (DAOExcepcion e) {}
+    }
+
+    public void finalizarReservaSinDannos(int id, String comentarios) {
+        try {
+            reservaDAO.finalizarReservaSinDannos(id, comentarios);
+        } catch (DAOExcepcion e) {}
+    }
+
+    public void finalizarReservaConDannos(int id, String comentarios) {
+        try {
+            reservaDAO.finalizarReservaConDannos(id, comentarios);
         } catch (DAOExcepcion e) {}
     }
 }

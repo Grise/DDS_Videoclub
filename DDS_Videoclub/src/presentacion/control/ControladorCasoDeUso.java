@@ -13,6 +13,7 @@ public abstract class ControladorCasoDeUso implements Initializable {
     protected ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado;
     protected ControladorAdministracion controladorAdministracion;
     protected static ControladorCrearReserva controladorCrearReservaBackup;
+    protected static ControladorGestionarReservas controladorGestionarReservas;
 
     public void setControladorPrincipal(ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado) {
         this.controladorMenuPrincipalEmpleado = controladorMenuPrincipalEmpleado;
@@ -57,6 +58,21 @@ public abstract class ControladorCasoDeUso implements Initializable {
     }
 
     public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorAdministracion controladorAdministracion) {
+        FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
+        T controlador = null;
+        try {
+            Parent parent = fxmlLoader.load();
+            controlador = fxmlLoader.getController();
+            controlador.stage.setScene(new Scene(parent));
+            controlador.stage.initOwner(owner);
+        } catch (NullPointerException | IOException e) {
+            e.printStackTrace();
+        }
+        return controlador;
+    }
+
+    public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorGestionarReservas controladorGestionarReservas) {
+        ControladorCasoDeUso.controladorGestionarReservas = controladorGestionarReservas;
         FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
         T controlador = null;
         try {

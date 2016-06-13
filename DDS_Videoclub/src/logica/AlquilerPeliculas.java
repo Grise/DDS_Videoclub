@@ -154,7 +154,7 @@ public final class AlquilerPeliculas {
         cargaPeliculas();
         cargaClientes();
         cargaEmpleados();
-        //cargaReservas();
+        cargaReservas();
     }
 
     // PERSONA
@@ -275,8 +275,13 @@ public final class AlquilerPeliculas {
     }
 
     public Reserva buscarReserva(Integer id) {
-        return listaReservas.get(id);
-
+        Iterator<Reserva> iterator = listaReservas.iterator();
+        while (iterator.hasNext()) {
+            Reserva reserva = iterator.next();
+            if (reserva.getId() == id)
+                return reserva;
+        }
+        return null;
     }
 
     public void eliminarReserva(Integer id){
@@ -369,5 +374,16 @@ public final class AlquilerPeliculas {
             }
         }
         dal.eliminarPersona(persona.getId());
+    }
+
+    public void finalizarReserva(Reserva reservaSeleccionada, String comentarios) {
+        listaReservas.remove(reservaSeleccionada);
+        dal.finalizarReservaSinDannos(reservaSeleccionada.getId(),comentarios);
+    }
+
+    public void finalizarReservaDannada(Reserva reservaSeleccionada, String comentarios) {
+        listaReservas.remove(reservaSeleccionada);
+        dal.finalizarReservaConDannos(reservaSeleccionada.getId(),comentarios);
+
     }
 }
