@@ -57,7 +57,7 @@ public class DAL {
 
     public void eliminarPersona(int id) {
         try {
-            reservaDAO.eliminarReserva(id);
+            personaDAO.eliminarPersona(id);
         } catch (DAOExcepcion e) {}
     }
     

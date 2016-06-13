@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
     private static final String MENU_RESERVA = "/presentacion/vista/CrearReserva.fxml";
-    private static final String MENU_MODIFICAR_USUARIOS = "/presentacion/vista/ModificarUsuarios.fxml";
+    private static final String MENU_MODIFICAR_USUARIOS = "/presentacion/vista/GestionarUsuarios.fxml";
     private static final String MENU_GESTIONAR_RESERVAS = "/presentacion/vista/GestionarReservas.fxml";
     private static final String MENU_ADMINISTRACION = "/presentacion/vista/Configuracion.fxml";
 
@@ -66,8 +66,8 @@ public class ControladorMenuPrincipalEmpleado extends ControladorCasoDeUso {
         imagenCrearReserva.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
         textoCrearReserva.setOnMouseClicked(event -> initCasoDeUso(MENU_RESERVA, ControladorCrearReserva.class).show());
 
-        imagenModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorModificarUsuarios.class).show());
-        textoModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorModificarUsuarios.class).show());
+        imagenModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorGestionarUsuarios.class).show());
+        textoModificarUsuarios.setOnMouseClicked(event -> initCasoDeUso(MENU_MODIFICAR_USUARIOS, ControladorGestionarUsuarios.class).show());
 
         imagenGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReservas.class).show());
         textoGestionarReservas.setOnMouseClicked(event -> initCasoDeUso(MENU_GESTIONAR_RESERVAS, ControladorGestionarReservas.class).show());

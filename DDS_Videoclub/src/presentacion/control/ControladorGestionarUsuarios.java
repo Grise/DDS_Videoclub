@@ -16,17 +16,12 @@ import javafx.stage.StageStyle;
 import logica.AlquilerPeliculas;
 import logica.Cliente;
 import logica.Empleado;
-import logica.Persona;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ControladorModificarUsuarios extends ControladorCasoDeUso {
-
-
-    @FXML
-    private Button butonNuevo;
+public class ControladorGestionarUsuarios extends ControladorCasoDeUso {
 
     @FXML
     private TextField inputNombre;
@@ -64,9 +59,9 @@ public class ControladorModificarUsuarios extends ControladorCasoDeUso {
     @FXML
     private TextField inputDNI;
 
-    private ObservableList<Empleado> masterData = FXCollections.observableArrayList();
+    private ObservableList<Empleado> masterDataEmpleado = FXCollections.observableArrayList();
 
-    private ObservableList<Cliente> masterData2 = FXCollections.observableArrayList();
+    private ObservableList<Cliente> masterDataCliente = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,7 +72,7 @@ public class ControladorModificarUsuarios extends ControladorCasoDeUso {
         rellenarTableViewEmpelado();
         rellenarTableViewCliente();
 
-        FilteredList<Empleado> filteredData = new FilteredList<>(masterData, p -> true);
+        FilteredList<Empleado> filteredData = new FilteredList<>(masterDataEmpleado, p -> true);
 
         inputNombre.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(eventoNombre -> {
@@ -109,7 +104,7 @@ public class ControladorModificarUsuarios extends ControladorCasoDeUso {
             });
         });
 
-        FilteredList<Cliente> filteredData2 = new FilteredList<>(masterData2, p -> true);
+        FilteredList<Cliente> filteredData2 = new FilteredList<>(masterDataCliente, p -> true);
 
         inputNombre.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(eventoNombre2 -> {
@@ -149,11 +144,35 @@ public class ControladorModificarUsuarios extends ControladorCasoDeUso {
         sortedData.comparatorProperty().bind(tableViewEmpleados.comparatorProperty());
         tableViewEmpleados.setItems(sortedData);
 
+
+        tableViewClientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null)
+                tableViewEmpleados.getSelectionModel().clearSelection();
+        });
+
+        tableViewEmpleados.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null)
+                tableViewClientes.getSelectionModel().clearSelection();
+        });
         /*********************************
          * COMPORTAMIENTO DE LOS BOTONES *
          *********************************/
-        // TODO poder eliminar usuarios creando eliminar en PersonaDAOImp y eliminarlos de las tablas
+        butonCancelar.setOnAction(event -> stage.close());
 
+        // TODO poder eliminar usuarios creando eliminar en PersonaDAOImp y eliminarlos de las tablas
+        butonEliminar.setOnAction(event -> {
+            Cliente clienteElegido = tableViewClientes.getSelectionModel().getSelectedItem();
+            if (clienteElegido == null) {
+                Empleado empleadoElegido = tableViewEmpleados.getSelectionModel().getSelectedItem();
+                AlquilerPeliculas.dameAlquilerPeliculasLogica().eliminarPersona(empleadoElegido);
+                masterDataEmpleado.remove(empleadoElegido);
+                empleadoElegido = null;
+            } else {
+                AlquilerPeliculas.dameAlquilerPeliculasLogica().eliminarPersona(clienteElegido);
+                masterDataCliente.remove(clienteElegido);
+                clienteElegido = null;
+            }
+        });
 
 
     }
@@ -164,7 +183,7 @@ public class ControladorModificarUsuarios extends ControladorCasoDeUso {
         tableColumnEmpleadoDni.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getDni()));
         tableColumnEmpleadoId.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getId()));
 
-        masterData = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados());
+        masterDataEmpleado = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados());
 
     }
 
@@ -174,7 +193,7 @@ public class ControladorModificarUsuarios extends ControladorCasoDeUso {
         tableColumnClienteDni.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getDni()));
         tableColumnClienteId.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getId()));
 
-        masterData2 = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaClientes());
+        masterDataCliente = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaClientes());
 
     }
 }

@@ -59,7 +59,7 @@ public class PersonaDAOImp implements IPersonaDAO {
     public void eliminarPersona(int id) throws DAOExcepcion {
         try {
             connectionManager.connect();
-            connectionManager.updateDB("delete from RESERVA where ID= '" + id + "'");
+            connectionManager.updateDB("delete from PERSONA where ID= '" + id + "'");
             connectionManager.close();
         } catch (Exception e) {
             throw new DAOExcepcion(e);

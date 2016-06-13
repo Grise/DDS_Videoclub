@@ -328,4 +328,38 @@ public final class AlquilerPeliculas {
         listaEmpleados.add(empleado);
 
     }
+
+    public void eliminarPersona(Persona persona) {
+        if (persona instanceof Cliente){
+            Iterator<Cliente> iterator = listaClientes.iterator();
+            while (iterator.hasNext()) {
+                Cliente cliente = iterator.next();
+                if (cliente.getId() == persona.getId()) {
+                    listaClientes.remove(cliente);
+                    break;
+                }
+            }
+        }
+        if (persona instanceof Empleado) {
+            Iterator<Empleado> iterator = listaEmpleados.iterator();
+            while (iterator.hasNext()) {
+                Empleado empleado = iterator.next();
+                if (empleado.getId() == persona.getId()) {
+                    listaEmpleados.remove(empleado);
+                    break;
+                }
+            }
+        }
+        if (persona instanceof Director) {
+            Iterator<Director> iterator = listaDirectores.iterator();
+            while (iterator.hasNext()) {
+                Director director = iterator.next();
+                if (director.getId() == persona.getId()) {
+                    listaDirectores.remove(director);
+                    break;
+                }
+            }
+        }
+        dal.eliminarPersona(persona.getId());
+    }
 }
