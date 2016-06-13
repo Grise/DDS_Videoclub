@@ -157,7 +157,27 @@ public final class AlquilerPeliculas {
         //cargaReservas();
     }
 
+    // PERSONA
+
+    public List<Persona> getListaPersonas(){
+        List<Persona> combinado = new ArrayList<>();
+        combinado.addAll(getListaClientes());
+        combinado.addAll(getListaDirectores());
+        combinado.addAll(getListaEmpleados());
+        return combinado;
+    }
+
     // DIRECTOR
+
+    public Director buscarDirector(String directorBuscar) {
+        Iterator<Director> iterator = listaDirectores.iterator();
+        while (iterator.hasNext()) {
+            Director director = iterator.next();
+            if (director.getNombre() == directorBuscar)
+                return director;
+        }
+        return null;
+    }
 
     public Director buscarDirector(Integer id) {
         Iterator<Director> iterator = listaDirectores.iterator();
@@ -206,6 +226,18 @@ public final class AlquilerPeliculas {
 
     // PELICULA
 
+    public void crearPelicula(Pelicula pelicula) {
+        PeliculaDTO peliculaDTO = new PeliculaDTO(pelicula.getId(),
+                pelicula.getNombre(),
+                pelicula.getAnno(),
+                pelicula.getDirector().getId(),
+                pelicula.getGenero().getId(),
+                pelicula.getStock());
+        annadirPelicula(pelicula);
+        dal.crearPelicula(peliculaDTO);
+
+    }
+
     public Pelicula buscarPelicula(Integer id) {
         return listaPeliculas.get(id);
 
@@ -237,6 +269,11 @@ public final class AlquilerPeliculas {
     public Reserva buscarReserva(Integer id) {
         return listaReservas.get(id);
 
+    }
+
+    public void eliminarReserva(Integer id){
+        listaReservas.remove(buscarReserva(id));
+        dal.eliminarReserva(id);
     }
 
     public void annadirReserva(Reserva reserva) {

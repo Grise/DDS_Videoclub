@@ -95,4 +95,14 @@ public class ReservaDAOImp implements IReservaDAO {
         }
 
     }
+
+    public void eliminarReserva(int id) throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            connectionManager.updateDB("delete from RESERVA where ID= '" + id + "'");
+            connectionManager.close();
+        } catch (Exception e) {
+            throw new DAOExcepcion(e);
+        }
+    }
 }

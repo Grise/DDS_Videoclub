@@ -54,6 +54,12 @@ public class DAL {
             personaDAO.crearPersona(persona);
         } catch (DAOExcepcion e) {}
     }
+
+    public void eliminarPersona(int id) {
+        try {
+            reservaDAO.eliminarReserva(id);
+        } catch (DAOExcepcion e) {}
+    }
     
     // DIRECTOR
 
@@ -100,7 +106,13 @@ public class DAL {
     }
     
     // PELICULA
-    
+
+    public void crearPelicula(PeliculaDTO pelicula) {
+        try {
+            peliculaDAO.crearPelicula(pelicula);
+        } catch (DAOExcepcion e) {}
+    }
+
     public PeliculaDTO buscarPelicula(int id) {
         try {
             return peliculaDAO.buscarPelicula(id);
@@ -139,5 +151,11 @@ public class DAL {
         } catch (DAOExcepcion e) {
             return null;
         }
+    }
+
+    public void eliminarReserva(int id) {
+        try {
+            reservaDAO.eliminarReserva(id);
+        } catch (DAOExcepcion e) {}
     }
 }

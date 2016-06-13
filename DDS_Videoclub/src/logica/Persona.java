@@ -1,6 +1,6 @@
 package logica;
 
-abstract class Persona {
+public abstract class Persona {
     abstract int getId();
 
     abstract String getNombre();

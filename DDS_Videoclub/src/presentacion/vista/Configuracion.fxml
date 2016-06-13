@@ -8,9 +8,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="178.0" prefWidth="413.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorConfiguracion">
    <children>
-      <Button fx:id="AñadirPelicula" layoutX="48.0" layoutY="56.0" mnemonicParsing="false" text="Añadir pelicula" />
-      <Button fx:id="AñadirUsuario" layoutX="48.0" layoutY="101.0" mnemonicParsing="false" text="Añadir usuario" />
-      <Button fx:id="AñadirGenero" layoutX="220.0" layoutY="101.0" mnemonicParsing="false" text="Añadir genero" />
-      <Button fx:id="AñadirDirector" layoutX="220.0" layoutY="56.0" mnemonicParsing="false" text="Añadir director" />
+      <Button fx:id="anadirPelicula" layoutX="48.0" layoutY="56.0" mnemonicParsing="false" text="Añadir pelicula" />
+      <Button fx:id="anadirUsuario" layoutX="48.0" layoutY="101.0" mnemonicParsing="false" text="Añadir usuario" />
+      <Button fx:id="anadirGenero" layoutX="220.0" layoutY="101.0" mnemonicParsing="false" text="Añadir genero" />
+      <Button fx:id="anadirDirector" layoutX="220.0" layoutY="56.0" mnemonicParsing="false" text="Añadir director" />
    </children>
 </AnchorPane>

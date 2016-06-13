@@ -21,6 +21,26 @@ public class PeliculaDAOImp implements IPeliculaDAO {
         }
     }
 
+    public void crearPelicula(PeliculaDTO peliculaDTO) throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            connectionManager.updateDB("insert into PELICULA (NOMBRE, ANNO, DIRECTOR, GENERO, STOCK) values ('"
+                    + peliculaDTO.getNombre()
+                    + "','"
+                    + peliculaDTO.getAnno()
+                    + "','"
+                    + peliculaDTO.getDirector()
+                    + "','"
+                    + peliculaDTO.getGenero()
+                    + "','"
+                    + peliculaDTO.getStock()
+                    + "')");
+            connectionManager.close();
+        } catch (Exception e) {
+            throw new DAOExcepcion(e);
+        }
+    }
+
     public PeliculaDTO buscarPelicula(int id) throws DAOExcepcion {
         try {
             connectionManager.connect();

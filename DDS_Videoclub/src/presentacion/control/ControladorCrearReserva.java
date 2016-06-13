@@ -12,16 +12,17 @@ import logica.*;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ControladorCrearReserva extends ControladorCasoDeUso {
+
     private static final String MENU_RESERVA_PELICULA = "/presentacion/vista/CrearReservaPelicula.fxml";
 
     public Pelicula pelicula;
 
     @FXML
     private Stage primaryStage;
+
     @FXML
     private DatePicker datePickerDesde;
 
@@ -49,7 +50,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Crear reserva");
 
-        rellenarComboBoxGeneros();
+        rellenarComboBoxDnis();
 
         /**********************************************
          * DEFINIMOS EL COMPORTAMIENTO DE LOS BOTONES *
@@ -92,7 +93,7 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
         return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, this);
     }
 
-    public void rellenarComboBoxGeneros() {
+    public void rellenarComboBoxDnis() {
         Iterator<Cliente> iterador = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaClientes().iterator();
         while (iterador.hasNext()) {
             Cliente cliente = iterador.next();

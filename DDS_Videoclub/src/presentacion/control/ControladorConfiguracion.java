@@ -14,19 +14,22 @@ import presentacion.control.ControladorCasoDeUso;
 
 public class ControladorConfiguracion extends ControladorCasoDeUso {
 
-   
+    private static final String MENU_CREAR_PELICULA = "/presentacion/vista/CrearPelicula.fxml";
 
     @FXML
-    private Button AñadirDirector;
+    private Stage primaryStage;
 
     @FXML
-    private Button AñadirPelicula;
+    private Button anadirUsuario;
 
     @FXML
-    private Button AñadirUsuario;
+    private Button anadirPelicula;
 
     @FXML
-    private Button AñadirGenero;
+    private Button anadirGenero;
+
+    @FXML
+    private Button anadirDirector;
 
 
     @Override
@@ -34,5 +37,12 @@ public class ControladorConfiguracion extends ControladorCasoDeUso {
         stage = new Stage(StageStyle.DECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Configuracion");
+
+        anadirPelicula.setOnMouseClicked(event -> initCasoDeUso(MENU_CREAR_PELICULA, ControladorCrearPelicula.class).show());
     }
+
+    private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {
+        return ControladorCasoDeUso.initCasoDeUso(urlVista, controlClass, primaryStage, this);
+    }
+
 }

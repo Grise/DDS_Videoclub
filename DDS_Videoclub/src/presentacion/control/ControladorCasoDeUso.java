@@ -11,6 +11,7 @@ import java.io.IOException;
 public abstract class ControladorCasoDeUso implements Initializable {
     protected Stage stage;
     protected ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado;
+    protected ControladorConfiguracion controladorConfiguracion;
     protected static ControladorCrearReserva controladorCrearReservaBackup;
 
     public void setControladorPrincipal(ControladorMenuPrincipalEmpleado controladorMenuPrincipalEmpleado) {
@@ -42,6 +43,20 @@ public abstract class ControladorCasoDeUso implements Initializable {
 
     public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorCrearReserva controladorCrearReserva) {
         controladorCrearReservaBackup = controladorCrearReserva;
+        FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
+        T controlador = null;
+        try {
+            Parent parent = fxmlLoader.load();
+            controlador = fxmlLoader.getController();
+            controlador.stage.setScene(new Scene(parent));
+            controlador.stage.initOwner(owner);
+        } catch (NullPointerException | IOException e) {
+            e.printStackTrace();
+        }
+        return controlador;
+    }
+
+    public static <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass, Stage owner, ControladorConfiguracion controladorConfiguracion) {
         FXMLLoader fxmlLoader = new FXMLLoader(ControladorCasoDeUso.class.getResource(urlVista));
         T controlador = null;
         try {

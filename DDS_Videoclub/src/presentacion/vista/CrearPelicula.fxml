@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="350.0" prefWidth="300.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorCrearPelicula">
+   <children>
+      <Button fx:id="botonCancelar" layoutX="184.0" layoutY="304.0" mnemonicParsing="false" text="Cancelar" />
+      <Button fx:id="botonAceptar" layoutX="74.0" layoutY="304.0" mnemonicParsing="false" text="Aceptar" />
+      <Label layoutX="16.0" layoutY="20.0" text="Título:" />
+      <ComboBox fx:id="directorComboBox" layoutX="83.0" layoutY="118.0" prefHeight="37.0" prefWidth="202.0" AnchorPane.rightAnchor="15.0" />
+      <TextField fx:id="inputTitulo" layoutX="83.0" layoutY="12.0" prefHeight="37.0" prefWidth="202.0" AnchorPane.rightAnchor="15.0" />
+      <Label layoutX="16.0" layoutY="75.0" text="Año:" />
+      <TextField fx:id="inputAno" layoutX="83.0" layoutY="67.0" prefHeight="37.0" prefWidth="202.0" AnchorPane.rightAnchor="15.0" />
+      <Label layoutX="16.0" layoutY="126.0" text="Director:" />
+      <Label layoutX="16.0" layoutY="182.0" text="Género:" />
+      <ComboBox fx:id="generoComboBox" layoutX="83.0" layoutY="174.0" prefHeight="37.0" prefWidth="202.0" AnchorPane.rightAnchor="15.0" />
+      <Label layoutX="16.0" layoutY="238.0" text="Stock inicial:" />
+      <TextField fx:id="inputStock" layoutX="109.0" layoutY="230.0" prefHeight="37.0" prefWidth="175.0" AnchorPane.rightAnchor="15.0" />
+   </children>
+</AnchorPane>

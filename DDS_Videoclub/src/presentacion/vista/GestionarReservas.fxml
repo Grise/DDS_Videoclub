@@ -12,11 +12,11 @@
    <children>
       <TableView fx:id="tableViewReservas" layoutY="73.0" prefHeight="320.0" prefWidth="714.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Película" />
-          <TableColumn prefWidth="75.0" text="Usuario" />
-            <TableColumn prefWidth="75.0" text="DNI" />
-            <TableColumn prefWidth="75.0" text="Fecha de inicio" />
-            <TableColumn prefWidth="75.0" text="Fecha de fin " />
+          <TableColumn fx:id="tableColumnPelicula" prefWidth="75.0" text="Película" />
+          <TableColumn fx:id="tableColumnUsuario" prefWidth="75.0" text="Usuario" />
+            <TableColumn fx:id="tableColumnDni" prefWidth="75.0" text="DNI" />
+            <TableColumn fx:id="tableColumnFechaInicio" prefWidth="75.0" text="Fecha de inicio" />
+            <TableColumn fx:id="tableColumnFechaFin" prefWidth="75.0" text="Fecha de fin " />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
