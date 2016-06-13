@@ -159,7 +159,6 @@ public class ControladorGestionarUsuarios extends ControladorCasoDeUso {
          *********************************/
         butonCancelar.setOnAction(event -> stage.close());
 
-        // TODO poder eliminar usuarios creando eliminar en PersonaDAOImp y eliminarlos de las tablas
         butonEliminar.setOnAction(event -> {
             Cliente clienteElegido = tableViewClientes.getSelectionModel().getSelectedItem();
             if (clienteElegido == null) {

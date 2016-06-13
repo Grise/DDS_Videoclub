@@ -88,6 +88,12 @@ public class DAL {
     }
     
     // GENERO
+
+    public void crearGenero(GeneroDTO genero) {
+        try {
+            generoDAO.crearGenero(genero);
+        } catch (DAOExcepcion e) {}
+    }
     
     public GeneroDTO buscarGenero(int id) {
         try {

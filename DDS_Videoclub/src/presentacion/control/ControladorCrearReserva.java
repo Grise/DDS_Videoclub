@@ -1,10 +1,8 @@
 package presentacion.control;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -56,29 +54,42 @@ public class ControladorCrearReserva extends ControladorCasoDeUso {
          * DEFINIMOS EL COMPORTAMIENTO DE LOS BOTONES *
          **********************************************/
         botonAceptar.setOnMouseClicked(event -> {
-            int id = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaReservas().size();
-            LocalDate localDatefechaDesde = datePickerDesde.getValue();
-            LocalDate localDatefechaHasta = datePickerHasta.getValue();
+            if(textoEscogerPelicula.getText()!= "Escoja una película" || datePickerDesde.getValue() != null ||
+                    datePickerHasta.getValue() != null || comboBoxDNI.getValue() != null) {
+                int id = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaReservas().size();
+                LocalDate localDatefechaDesde = datePickerDesde.getValue();
+                LocalDate localDatefechaHasta = datePickerHasta.getValue();
 
-            Date fechaDesde = java.sql.Date.valueOf(localDatefechaDesde);
-            Date fechaHasta = java.sql.Date.valueOf(localDatefechaHasta);
+                Date fechaDesde = java.sql.Date.valueOf(localDatefechaDesde);
+                Date fechaHasta = java.sql.Date.valueOf(localDatefechaHasta);
 
-            StringTokenizer stringTokenizer = new StringTokenizer(comboBoxDNI.getValue(), " -");
-            String dni = stringTokenizer.nextToken();
-            Cliente cliente = AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarCliente(dni);
-            Random r = new Random();
-            int rMaximo = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados().size()-1;
-            int empleadoRandom=0;
-            if(rMaximo!=0)
-                empleadoRandom = r.nextInt(rMaximo);
-            Empleado empleado = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados().get(empleadoRandom);
+                StringTokenizer stringTokenizer = new StringTokenizer(comboBoxDNI.getValue(), " -");
+                String dni = stringTokenizer.nextToken();
+                Cliente cliente = AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarCliente(dni);
+                Random r = new Random();
+                int rMaximo = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados().size() - 1;
+                int empleadoRandom = 0;
+                if (rMaximo != 0)
+                    empleadoRandom = r.nextInt(rMaximo);
+                Empleado empleado = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaEmpleados().get(empleadoRandom);
 
-            Reserva reserva = new Reserva(id, fechaDesde, fechaHasta, pelicula, cliente, empleado);
+                Reserva reserva = new Reserva(id, fechaDesde, fechaHasta, pelicula, cliente, empleado);
 
-            AlquilerPeliculas.dameAlquilerPeliculasLogica().crearReserva(reserva);
+                AlquilerPeliculas.dameAlquilerPeliculasLogica().crearReserva(reserva);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Éxito");
+                alert.setHeaderText("Éxito al crear la reserva");
+                alert.setContentText("Se ha creado la nueva reserva con éxito");
 
-            //TODO MOSTRAR ALERT OK Y CERRAR
-            System.out.println("INSERTAO");
+                alert.showAndWait();
+            }else{
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText("Error al crear la reserva");
+                alert.setContentText("Se deben rellenar todos los campos para poder crear la reserva");
+
+                alert.showAndWait();
+            }
         });
 
         botonCancelar.setOnMouseClicked(event -> {

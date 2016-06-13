@@ -55,26 +55,30 @@ public class ControladorCrearPelicula extends ControladorCasoDeUso {
          * COMPORTAMIENTO DE LOS BOTONES *
          *********************************/
 
-        // TODO revisar suciedad para parchear de String a Integer por si hay solucion mejor
-
         botonAceptar.setOnMouseClicked(event -> {
             int aux;
             int aux2;
             int id = AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaPeliculas().size();
-            if(inputTitulo.getText()!=null && inputAno.getText()!=null &&
-                    inputStock.getText()!=null && generoComboBox.getValue()!=null && directorComboBox.getValue()!=null){
+            if(inputTitulo.getText()!=null || inputAno.getText()!=null ||
+                    inputStock.getText()!=null || generoComboBox.getValue()!=null || directorComboBox.getValue()!=null){
                 aux = Integer.parseInt(inputAno.getText());
                 aux2 = Integer.parseInt(inputStock.getText());
                 Pelicula pel = new Pelicula(id, inputTitulo.getText(), aux,
                         (AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarDirector(directorComboBox.getValue())),
                         (AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarGenero(generoComboBox.getValue())), aux2);
                 AlquilerPeliculas.dameAlquilerPeliculasLogica().crearPelicula(pel);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Éxito");
+                alert.setHeaderText("Éxito al añadir la película");
+                alert.setContentText("Se ha añadido la nueva película con éxito");
+
+                alert.showAndWait();
                 stage.close();
             }else{
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Information Dialog");
-                alert.setHeaderText("Look, an Information Dialog");
-                alert.setContentText("Rellenar todos los campos");
+                alert.setTitle("Error");
+                alert.setHeaderText("Error al crear la película");
+                alert.setContentText("Se deben rellenar todos los campos");
 
                 alert.showAndWait();
             }

@@ -12,9 +12,10 @@ import java.util.ResourceBundle;
 import presentacion.control.ControladorCasoDeUso;
 
 
-public class ControladorConfiguracion extends ControladorCasoDeUso {
+public class ControladorAdministracion extends ControladorCasoDeUso {
 
     private static final String MENU_CREAR_PELICULA = "/presentacion/vista/CrearPelicula.fxml";
+    private static final String MENU_CREAR_GENERO = "/presentacion/vista/CrearGenero.fxml";
 
     @FXML
     private Stage primaryStage;
@@ -39,6 +40,7 @@ public class ControladorConfiguracion extends ControladorCasoDeUso {
         stage.setTitle("Configuracion");
 
         anadirPelicula.setOnMouseClicked(event -> initCasoDeUso(MENU_CREAR_PELICULA, ControladorCrearPelicula.class).show());
+        anadirGenero.setOnMouseClicked(event -> initCasoDeUso(MENU_CREAR_GENERO, ControladorCrearGenero.class).show());
     }
 
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {

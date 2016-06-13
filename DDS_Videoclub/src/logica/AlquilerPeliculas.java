@@ -200,6 +200,14 @@ public final class AlquilerPeliculas {
 
     // GENERO
 
+    public void crearGenero(Genero genero) {
+        GeneroDTO generoDTO = new GeneroDTO(genero.getId(),
+                genero.getNombre());
+        annadirGenero(genero);
+        dal.crearGenero(generoDTO);
+
+    }
+
     public Genero buscarGenero(Integer id) {
         return listaGeneros.get(id);
 
@@ -209,7 +217,7 @@ public final class AlquilerPeliculas {
         Iterator<Genero> iterator = listaGeneros.iterator();
         while (iterator.hasNext()) {
             Genero genero = iterator.next();
-            if (genero.getNombre() == generoBuscar)
+            if (genero.getNombre().compareToIgnoreCase(generoBuscar)==0)
                 return genero;
         }
         return null;

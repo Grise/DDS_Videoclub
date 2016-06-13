@@ -21,6 +21,18 @@ public class GeneroDAOImp implements IGeneroDAO {
         }
     }
 
+    public void crearGenero(GeneroDTO generoDTO) throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            connectionManager.updateDB("insert into GENERO (NOMBRE) values ('"
+                    + generoDTO.getNombre()
+                    + "')");
+            connectionManager.close();
+        } catch (Exception e) {
+            throw new DAOExcepcion(e);
+        }
+    }
+
     public GeneroDTO buscarGenero(int id) throws DAOExcepcion {
         try {
             connectionManager.connect();
