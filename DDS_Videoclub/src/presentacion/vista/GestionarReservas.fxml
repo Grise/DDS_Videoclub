@@ -8,9 +8,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="499.0" prefWidth="747.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorGestionarReservas">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="650.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.control.ControladorGestionarReservas">
    <children>
-      <TableView fx:id="tableViewReservas" layoutX="155.0" layoutY="10.0" prefHeight="339.0" prefWidth="714.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+      <TableView fx:id="tableViewReservas" layoutY="73.0" prefHeight="320.0" prefWidth="714.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Película" />
           <TableColumn prefWidth="75.0" text="Usuario" />
@@ -22,19 +22,11 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="botonEditar" layoutX="6.0" layoutY="361.0" mnemonicParsing="false" text="Editar" AnchorPane.leftAnchor="6.0" />
-      <Button fx:id="botonEliminar" layoutX="218.0" layoutY="361.0" mnemonicParsing="false" text="Eliminar" AnchorPane.rightAnchor="9.0" />
-      <Button fx:id="botonFinalizar" layoutX="103.0" layoutY="361.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="106.0" text="Finalizar" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="118.0" />
-      <Label layoutX="24.0" layoutY="413.0" text="Usuario:" />
-      <TextField layoutX="92.0" layoutY="405.0" prefHeight="37.0" prefWidth="136.0" />
-      <Label layoutX="25.0" layoutY="455.0" text="DNI:" />
-      <TextField layoutX="92.0" layoutY="447.0" prefHeight="37.0" prefWidth="136.0" />
-      <TextField layoutX="363.0" layoutY="447.0" prefHeight="37.0" prefWidth="136.0" />
-      <Label layoutX="246.0" layoutY="455.0" text="Fecha de fin: " />
-      <TextField layoutX="363.0" layoutY="405.0" prefHeight="37.0" prefWidth="136.0" />
-      <Label layoutX="245.0" layoutY="413.0" text="Fecha de inicio:" />
-      <Label layoutX="509.0" layoutY="413.0" text="Película:" />
-      <TextField layoutX="569.0" layoutY="405.0" prefHeight="37.0" prefWidth="136.0" />
-      <Button layoutX="569.0" layoutY="449.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="136.0" text="Buscar" />
+      <Button fx:id="botonEliminar" layoutX="424.0" layoutY="403.0" mnemonicParsing="false" text="Eliminar" />
+      <Label layoutX="14.0" layoutY="27.0" text="DNI:" />
+      <Label layoutX="215.0" layoutY="27.0" text="Película:" />
+      <TextField fx:id="peliculaTextField" layoutX="282.0" layoutY="19.0" prefHeight="37.0" prefWidth="136.0" />
+      <Button fx:id="botonCancelar" layoutX="536.0" layoutY="403.0" mnemonicParsing="false" text="Cancelar" />
+      <ComboBox fx:id="dniComboBox" layoutX="51.0" layoutY="19.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
