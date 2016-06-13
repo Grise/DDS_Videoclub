@@ -24,9 +24,6 @@ import java.util.ResourceBundle;
 public class ControladorGestionarUsuarios extends ControladorCasoDeUso {
 
     @FXML
-    private TextField inputNombre;
-
-    @FXML
     private Button butonEliminar;
 
     @FXML
@@ -56,9 +53,6 @@ public class ControladorGestionarUsuarios extends ControladorCasoDeUso {
     @FXML
     private Button butonCancelar;
 
-    @FXML
-    private TextField inputDNI;
-
     private ObservableList<Empleado> masterDataEmpleado = FXCollections.observableArrayList();
 
     private ObservableList<Cliente> masterDataCliente = FXCollections.observableArrayList();
@@ -74,67 +68,7 @@ public class ControladorGestionarUsuarios extends ControladorCasoDeUso {
 
         FilteredList<Empleado> filteredData = new FilteredList<>(masterDataEmpleado, p -> true);
 
-        inputNombre.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(eventoNombre -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (eventoNombre.getNombre().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
-        });
-
-        inputDNI.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(eventoDni -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (eventoDni.getDni().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
-        });
-
         FilteredList<Cliente> filteredData2 = new FilteredList<>(masterDataCliente, p -> true);
-
-        inputNombre.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(eventoNombre2 -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (eventoNombre2.getNombre().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
-        });
-
-        inputDNI.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(eventoDni2 -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (eventoDni2.getDni().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
-        });
 
         SortedList<Cliente> sortedData2 = new SortedList<>(filteredData2);
         sortedData2.comparatorProperty().bind(tableViewClientes.comparatorProperty());

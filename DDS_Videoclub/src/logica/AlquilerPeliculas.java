@@ -421,4 +421,21 @@ public final class AlquilerPeliculas {
     public List<Reserva> getListaReservas() {
         return listaReservas;
     }
+
+    public void crearPersona(int id, String dni, String nombre, String tipo) {
+        PersonaFabrica personaFabrica = new PersonaFabrica();
+        Persona persona = personaFabrica.crearPersona(id, dni, nombre, tipo);
+        if (tipo.equalsIgnoreCase("DIRECTOR")) {
+            annadirDirector((Director) persona);
+        }
+        if (tipo.equalsIgnoreCase("CLIENTE")) {
+            annadirCliente((Cliente) persona);
+        }
+        if (tipo.equalsIgnoreCase("EMPLEADO")) {
+            annadirEmpleado((Empleado) persona);
+        }
+        PersonaDTO personaDTO = new PersonaDTO(id, dni, nombre, tipo);
+        dal.crearPersona(personaDTO);
+
+    }
 }

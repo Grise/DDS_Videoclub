@@ -42,6 +42,12 @@ public class ControladorCrearGenero extends ControladorCasoDeUso {
                 if (AlquilerPeliculas.dameAlquilerPeliculasLogica().buscarGenero(inputGenero.getText()) == null) {
                     Genero genero = new Genero(id, inputGenero.getText());
                     AlquilerPeliculas.dameAlquilerPeliculasLogica().crearGenero(genero);
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Éxito");
+                    alert.setHeaderText("Éxito al crear el género");
+                    alert.setContentText("Se ha creado el nuevo género con éxito");
+
+                    alert.showAndWait();
                 } else {
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Error");
