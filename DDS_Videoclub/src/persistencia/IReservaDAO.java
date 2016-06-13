@@ -10,7 +10,9 @@ public interface IReservaDAO {
 
     void crearReserva(ReservaDTO reserva) throws DAOExcepcion;
     
-    public List <ReservaDTO> obtenerReservas() throws DAOExcepcion;
+    List <ReservaDTO> obtenerReservasFinalizadas() throws DAOExcepcion;
+
+    List <ReservaDTO> obtenerReservasActivas() throws DAOExcepcion;
 
     void eliminarReserva(int id) throws DAOExcepcion;
 

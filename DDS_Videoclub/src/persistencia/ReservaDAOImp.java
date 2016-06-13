@@ -5,14 +5,12 @@ import persistencia.dto.ReservaDTO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReservaDAOImp implements IReservaDAO {
 
     private ConnectionManager connectionManager;
-    private LocalDateTime dateTimeInicio, dateTimeFin;
 
     public ReservaDAOImp() throws DAOExcepcion {
         super();
@@ -47,16 +45,6 @@ public class ReservaDAOImp implements IReservaDAO {
     public void crearReserva(ReservaDTO reserva) throws DAOExcepcion {
         try {
             connectionManager.connect();
-            String prueba = "insert into RESERVA (FECHA_INICIO, FECHA_FIN, PELICULA, CLIENTE, EMPLEADO) values('"
-                    + reserva.getFechaInicio()
-                    + "','"
-                    + reserva.getFechaFin()
-                    + "','"
-                    + reserva.getPelicula()
-                    + "','"
-                    + reserva.getCliente()
-                    + "', '"
-                    + reserva.getEmpleado() + "')";
             connectionManager.updateDB("insert into RESERVA (FECHA_INICIO, FECHA_FIN, PELICULA, CLIENTE, EMPLEADO) values('"
                             + reserva.getFechaInicio()
                             + "','"
@@ -73,13 +61,13 @@ public class ReservaDAOImp implements IReservaDAO {
         }
     }
 
-    public List<ReservaDTO> obtenerReservas() throws DAOExcepcion {
+    public List<ReservaDTO> obtenerReservasFinalizadas() throws DAOExcepcion {
         try {
             connectionManager.connect();
-            ResultSet rs = connectionManager.queryDB("select * from RESERVA");
+            ResultSet rs = connectionManager.queryDB("select * from RESERVA WHERE DEVOLUCION_DANNADA IS NOT NULL");
             connectionManager.close();
 
-            List<ReservaDTO> listaReservaDTO = new ArrayList<ReservaDTO>();
+            List<ReservaDTO> listaReservaDTO = new ArrayList<>();
 
             try {
                 while (rs.next()) {
@@ -99,10 +87,36 @@ public class ReservaDAOImp implements IReservaDAO {
             }
         } catch (SQLException e) {
             throw new DAOExcepcion(e);
-        } catch (DAOExcepcion e) {
-            throw e;
         }
+    }
 
+    public List<ReservaDTO> obtenerReservasActivas() throws DAOExcepcion {
+        try {
+            connectionManager.connect();
+            ResultSet rs = connectionManager.queryDB("select * from RESERVA WHERE DEVOLUCION_DANNADA IS NULL");
+            connectionManager.close();
+
+            List<ReservaDTO> listaReservaDTO = new ArrayList<>();
+
+            try {
+                while (rs.next()) {
+
+                    ReservaDTO reservaDTO = new ReservaDTO(
+                            rs.getInt("ID"),
+                            rs.getDate("FECHA_INICIO"),
+                            rs.getDate("FECHA_FIN"),
+                            rs.getInt("PELICULA"),
+                            rs.getInt("CLIENTE"),
+                            rs.getInt("EMPLEADO"));
+                    listaReservaDTO.add(reservaDTO);
+                }
+                return listaReservaDTO;
+            } catch (Exception e) {
+                throw new DAOExcepcion(e);
+            }
+        } catch (SQLException e) {
+            throw new DAOExcepcion(e);
+        }
     }
 
     public void eliminarReserva(int id) throws DAOExcepcion {
@@ -130,7 +144,6 @@ public class ReservaDAOImp implements IReservaDAO {
     public void finalizarReservaConDannos(int id, String comentarios) throws DAOExcepcion {
         try {
             connectionManager.connect();
-            String test = "update RESERVA set DEVOLUCION_DANADA=1, COMENTARIOS=" + comentarios + " where id=" + id;
             connectionManager.updateDB("update RESERVA set DEVOLUCION_DANNADA='1', COMENTARIOS='" + comentarios + "' where id=" + id);
             connectionManager.close();
         } catch (SQLException e) {

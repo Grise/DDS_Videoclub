@@ -150,9 +150,17 @@ public class DAL {
         } catch (DAOExcepcion e) {}
     }
     
-    public List<ReservaDTO> obtenerReservas() {
+    public List<ReservaDTO> obtenerReservasFinalizadas() {
         try {
-            return reservaDAO.obtenerReservas();
+            return reservaDAO.obtenerReservasFinalizadas();
+        } catch (DAOExcepcion e) {
+            return null;
+        }
+    }
+
+    public List<ReservaDTO> obtenerReservasActivas() {
+        try {
+            return reservaDAO.obtenerReservasActivas();
         } catch (DAOExcepcion e) {
             return null;
         }

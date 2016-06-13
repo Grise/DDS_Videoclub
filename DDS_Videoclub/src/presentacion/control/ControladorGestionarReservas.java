@@ -148,7 +148,7 @@ public class ControladorGestionarReservas extends ControladorCasoDeUso {
         tableColumnFechaInicio.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getFechaInicio()));
         tableColumnFechaFin.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().getFechaFin()));
 
-        masterData = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaReservas());
+        masterData = FXCollections.observableArrayList(AlquilerPeliculas.dameAlquilerPeliculasLogica().getListaReservasActivas());
     }
 
     private <T extends ControladorCasoDeUso> T initCasoDeUso(String urlVista, Class<T> controlClass) {

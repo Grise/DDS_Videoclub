@@ -19,6 +19,8 @@ public final class AlquilerPeliculas {
     private DAL dal;
     private List<Empleado> listaEmpleados = new ArrayList<>();
     private List<Cliente> listaClientes = new ArrayList<>();
+    private List<Reserva> listaReservasActivas = new ArrayList<>();
+    private List<Reserva> listaReservasFinalizadas = new ArrayList<>();
     private List<Reserva> listaReservas = new ArrayList<>();
     private List<Pelicula> listaPeliculas = new ArrayList<>();
     private List<Director> listaDirectores = new ArrayList<>();
@@ -44,14 +46,20 @@ public final class AlquilerPeliculas {
         this.listaClientes = listaClientes;
     }
 
-    public List<Reserva> getListaReservas() {
-        return listaReservas;
+    public List<Reserva> getListaReservasActivas() {
+        return listaReservasActivas;
     }
 
-    public void setListaReservas(List<Reserva> listaReservas) {
-        this.listaReservas = listaReservas;
+    public List<Reserva> getListaReservasFinalizadas() {
+        return listaReservasFinalizadas;
     }
 
+    public void setListaReservasActivas(List<Reserva> listaReservas) {
+        this.listaReservasActivas = listaReservas;
+    }
+    public void setListaReservasFinalizadas(List<Reserva> listaReservas) {
+        this.listaReservasFinalizadas = listaReservas;
+    }
     public List<Director> getListaDirectores() {
         return listaDirectores;
     }
@@ -117,10 +125,23 @@ public final class AlquilerPeliculas {
 
     }
 
-    private void cargaReservas() {
-        List<ReservaDTO> listaReservasDTO = dal.obtenerReservas();
+    private void cargaReservasFinalizadas() {
+        List<ReservaDTO> listaReservasDTO = dal.obtenerReservasFinalizadas();
         for (ReservaDTO reservaDTO : listaReservasDTO) {
-            annadirReserva(new Reserva(reservaDTO.getId(),
+            annadirReservaFinalizada(new Reserva(reservaDTO.getId(),
+                    reservaDTO.getFechaInicio(),
+                    reservaDTO.getFechaFin(),
+                    buscarPelicula(reservaDTO.getPelicula()),
+                    buscarCliente(reservaDTO.getCliente()),
+                    buscarEmpleado(reservaDTO.getEmpleado())));
+        }
+
+    }
+
+    private void cargaReservasActivas() {
+        List<ReservaDTO> listaReservasDTO = dal.obtenerReservasActivas();
+        for (ReservaDTO reservaDTO : listaReservasDTO) {
+            annadirReservaActiva(new Reserva(reservaDTO.getId(),
                     reservaDTO.getFechaInicio(),
                     reservaDTO.getFechaFin(),
                     buscarPelicula(reservaDTO.getPelicula()),
@@ -154,7 +175,8 @@ public final class AlquilerPeliculas {
         cargaPeliculas();
         cargaClientes();
         cargaEmpleados();
-        cargaReservas();
+        cargaReservasFinalizadas();
+        cargaReservasActivas();
     }
 
     // PERSONA
@@ -269,15 +291,21 @@ public final class AlquilerPeliculas {
                 reserva.getPelicula().getId(),
                 reserva.getCliente().getId(),
                 reserva.getEmpleado().getId());
-        annadirReserva(reserva);
+        annadirReservaActiva(reserva);
         dal.crearReserva(reservaDTO);
 
     }
 
     public Reserva buscarReserva(Integer id) {
-        Iterator<Reserva> iterator = listaReservas.iterator();
+        Iterator<Reserva> iterator = listaReservasActivas.iterator();
         while (iterator.hasNext()) {
             Reserva reserva = iterator.next();
+            if (reserva.getId() == id)
+                return reserva;
+        }
+        Iterator<Reserva> iterator2 = listaReservasFinalizadas.iterator();
+        while (iterator2.hasNext()) {
+            Reserva reserva = iterator2.next();
             if (reserva.getId() == id)
                 return reserva;
         }
@@ -286,16 +314,19 @@ public final class AlquilerPeliculas {
 
     public void eliminarReserva(Integer id){
         listaReservas.remove(buscarReserva(id));
+        listaReservasActivas.remove(buscarReserva(id));
+        listaReservasFinalizadas.remove(buscarReserva(id));
         dal.eliminarReserva(id);
     }
 
-    public void annadirReserva(Reserva reserva) {
+    public void annadirReservaActiva(Reserva reserva) {
+        listaReservasActivas.add(reserva);
         listaReservas.add(reserva);
-
     }
 
-    private void getListaReservasBD() {
-        List<ReservaDTO> reservaDTO = dal.obtenerReservas();
+    public void annadirReservaFinalizada(Reserva reserva){
+        listaReservasFinalizadas.add(reserva);
+        listaReservas.add(reserva);
     }
 
     // CLIENTE
@@ -385,5 +416,9 @@ public final class AlquilerPeliculas {
         listaReservas.remove(reservaSeleccionada);
         dal.finalizarReservaConDannos(reservaSeleccionada.getId(),comentarios);
 
+    }
+
+    public List<Reserva> getListaReservas() {
+        return listaReservas;
     }
 }
